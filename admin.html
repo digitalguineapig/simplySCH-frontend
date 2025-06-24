@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./assets/stylesheets/admin.css"/>
+
+    <title>SimplySchedule</title>
+    <link rel="icon" type="image/x-icon" href="./assets/images/ssfavicon.png"/>
+</head>
+<body>
+    <div class="main-grid">
+        <header>
+            <div class="admin-header">
+                <a href= '/'><img src="./assets/images/denuccis_small_print.png" style="width: 100px;"/></a>
+                <div>
+                    <h2>Matthew David</h2>
+                    <p>Administrator for company.name</p>
+                </div>
+            </div>
+            <div class="admin-daily">
+                <h3 class="daily-date">Today's Schedule (07/01/2023):</h3>
+                <div class="daily-info admin-info">
+                    <!--Entire daily schedule.-->
+                    <div class="shift-item">
+                        <div class="center-item">
+                            <h4>11:00 AM-5:00 PM</h4>
+                            <p>Clock in: 10:55 AM</p>
+                            <p>Clock out: 5:03 PM</p>
+                            <!--If there are multiple clock in and clock outs, this should just continue to populate with data in the same format (clock in, clock out, clock in, clock out)-->
+                        </div>
+                        <div class="center-item">
+                            <h4>Bruce Wayne</h4>
+                            <p>Manager</p>
+                        </div>
+                    </div>
+                    <div class="shift-item">
+                        <div class="center-item">
+                            <h4>11:00 AM-5:00 PM</h4>
+                            <p>Clock in: 11:00 AM</p>
+                            <p>Clock out: 5:01 PM</p>
+                        </div>
+                        <div class="center-item">
+                            <h4>John Smith</h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="shift-item">
+                        <div class="center-item">
+                            <h4>11:00 AM-5:00 PM</h4>
+                            <p>Clock in: 11:00 AM</p>
+                            <p>Clock out: 5:01 PM</p>
+                        </div>
+                        <div class="center-item">
+                            <h4>Betty White</h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="shift-item">
+                        <div class="center-item">
+                            <h4>5:00 PM-11:00 PM</h4>
+                            <p>Clock in: 5:00 PM</p>
+                            <!--If there is no clock out information, it either means that the shift hasn't ended or the employee hasn't clocked out. Should a "Clock out: Needed/Not Logged/Other" appear after a certain amount of time, or is that not necessary?-->
+                        </div>
+                        <div class="center-item">
+                            <h4>Rebecca Black</h4>
+                            <p>Assistant Manager</p>
+                        </div>
+                    </div>
+                    <div class="shift-item">
+                        <div class="center-item">
+                            <h4>5:00 PM-11:00 PM</h4>
+                            <p>Clock in: 5:00 PM</p>
+                        </div>
+                        <div class="center-item">
+                            <h4>Betsy Smalls</h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="shift-item">
+                        <div class="center-item">
+                            <h4>5:00 PM-11:00 PM</h4>
+                            <p>Clock in: 5:00 PM</p>
+                        </div>
+                        <div class="center-item">
+                            <h4>Jane Doe</h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="shift-item">
+                        <div class="center-item">
+                            <h4>5:00 PM-11:00 PM</h4>
+                            <p>Clock in: 5:00 PM</p>
+                        </div>
+                        <div class="center-item">
+                            <h4>Mark Zuckerberg</h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="shift-item">
+                        <div class="center-item">
+                            <h4>5:00 PM-11:00 PM</h4>
+                            <p>Clock in: 5:00 PM</p>
+                        </div>
+                        <div class="center-item">
+                            <h4>Enlongated Muskrat</h4>
+                            <p>Training</p>
+                        </div>
+                    </div>
+                    <div class="shift-item">
+                        <div class="center-item">
+                            <h4>7:00 PM-11:00 PM</h4>
+                            <p>Not Started</p> <!--Use timeclock/time intervals to go from "Not Started" (hours up to that point + grace period) to "Late" (after grace period but before end of shift) to "No Show" (shift is over with no clock in information) if possible-->
+                        </div>
+                        <div class="center-item">
+                            <h4>Duke Luckington</h4>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mock-footer">
+                    <a href="./index.html"><button>Log Out</button></a>
+                    <a href="./main.html"><button>Employee Profile</button></a>
+                </div>
+            </div>
+        </header>
+        <main>
+            <h1 class="main-title">Simply<span>Schedule</span> Manager Page</h1>
+            <div class="weekly-toggle">
+                <p><i class="arrow left"></i></p>
+                <h2>07/02/2023 - 07/08/2023</h2>
+                <p><i class="arrow right"></i></p>
+            </div>
+            <div>
+                <div class="swiper mySwiper carousel-holder">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide single-day">
+                            <div class="daily-date">
+                                <h3>07/02</h3>
+                            </div>
+                            <div class="daily-info">
+                                    <div class="shift-item">
+                                        <div class="center-item">
+                                            <h4>11:00 AM-5:00 PM</h4>
+                                            <p>Clock in: 11:00 AM</p>
+                                            <p>Clock out: 5:01 PM</p>
+                                        </div>
+                                        <div class="center-item">
+                                            <h4>Johnson Compensation Jr</h4>
+                                            <p>Assistant Manager</p>
+                                        </div>   
+                                    </div>
+                                    <div class="shift-item">
+                                        <div class="center-item">
+                                            <h4>11:00 AM-5:00 PM</h4>
+                                            <p>Clock in: 11:00 AM</p>
+                                            <p>Clock out: 5:01 PM</p>
+                                        </div>
+                                        <div class="center-item">
+                                            <h4>Hey You</h4>
+                                            <p>Assistant Manager</p>
+                                        </div>
+                                    </div>
+                                    <div class="shift-item">
+                                        <div class="center-item">
+                                            <h4>11:00 AM-5:00 PM</h4>
+                                            <p>Clock in: 11:00 AM</p>
+                                            <p>Clock out: 5:01 PM</p>
+                                        </div>
+                                        <div class="center-item">
+                                            <h4>Snoopy Brown</h4>
+                                            <p></p>
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                    <div class="shift-item">
+                                        <div class="center-item">
+                                            <h4>11:00 AM-5:00 PM</h4>
+                                            <p>Clock in: 11:00 AM</p>
+                                            <p>Clock out: 5:01 PM</p>
+                                        </div>
+                                        <div class="center-item">
+                                            <h4>Princess Cinderella</h4>
+                                            <p>Training</p>
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                    <div class="shift-item">
+                                        <div class="center-item">
+                                            <p>5:00 PM-11:00 PM</p>
+                                            <p>Clock in: 5:00 PM</p>
+                                            <p>Clock out: 10:47 PM</p>
+                                        </div>
+                                        <div class="center-item">
+                                            <h4>Richard Nixon</h4>
+                                            <p>General Manager</p>
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                    <div class="shift-item">
+                                        <div class="center-item">
+                                            <p>5:00 PM-11:00 PM</p>
+                                            <p>Clock in: 5:00 PM</p>
+                                            <p>Clock out: 10:47 PM</p>
+                                        </div>
+                                        <div class="center-item">
+                                            <h4>Darth Vader</h4>
+                                            <p>Assistant Manager</p>
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                    <div class="shift-item">
+                                        <div class="center-item">
+                                            <p>5:00 PM-11:00 PM</p>
+                                            <p>Clock in: 5:00 PM</p>
+                                            <p>Clock out: 10:47 PM</p>
+                                        </div>
+                                        <div class="center-item">
+                                            <h4>Steve from Blues Clues</h4>
+                                            <p></p>
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                    <div class="shift-item">
+                                        <div class="center-item">
+                                            <p>5:00 PM-11:00 PM</p>
+                                            <p>Clock in: 5:00 PM</p>
+                                            <p>Clock out: 10:47 PM</p>
+                                        </div>
+                                        <div class="center-item">
+                                            <h4>Captain America</h4>
+                                            <p></p>
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                    <div class="shift-item">
+                                        <div class="center-item">
+                                            <p>5:00 PM-11:00 PM</p>
+                                            <p>Clock in: 5:00 PM</p>
+                                            <p>Clock out: 10:47 PM</p>
+                                        </div>
+                                        <div>
+                                            <h4>Just Jimmy</h4>
+                                            <p></p>
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                    <div class="shift-item">
+                                        <div class="center-item">
+                                            <p>5:00 PM-11:00 PM</p>
+                                            <p>Clock in: 5:00 PM</p>
+                                            <p>Clock out: 10:47 PM</p>
+                                        </div>
+                                        <div>
+                                            <h4>Beatrice LeBeau</h4>
+                                            <p></p>
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                    <div class="shift-item">
+                                        <div class="center-item">
+                                            <p>7:00 PM-11:00 PM</p>
+                                            <p>N/A</p>
+                                            <!--N/A if unclaimed, No Show if claimed-->
+                                        </div>
+                                        <div class="center-item">
+                                            <h4>Open Shift</h4>
+                                            <p>Unclaimed</p>
+                                            <!--If open shift is unclaimed by the end of the day, mark as such?-->
+                                        </div>
+                                        <div></div>
+                                    </div>
+                            </div>
+                        </div>
+                        
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper",
+        {
+            slidesPerView: "auto",
+            spaceBetween: 10,
+            navigation:
+            {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            }
+        });
+    </script>
+</body>
+</html>

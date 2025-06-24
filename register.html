@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./assets/stylesheets/login.css" /> <!--The register page also uses login.css for convenience.-->
+
+    <title>SimplySchedule</title>
+    <link rel="icon" type="image/x-icon" href="./assets/images/ssfavicon.png" />
+
+</head>
+<body>
+
+    <main>
+        <div class="formatting reg-formatting">
+            <div>
+                <h2 class="form-title">New User Registration</h2>
+                <p class="notice">
+                    Please make sure you use the email you gave your employer and a unique password. 
+                    Your password needs a minimum of 6 characters and at least one uppercase letter, one lowercase letter, one number, and one special character.
+                    <!--Edit above if password requirements are different-->
+                </p>
+                <form>
+                    <div class="inputs">
+                        <!--IDs are already set, change as needed.-->
+                        <!--Checks needed:
+                        *Confirm email exists
+                        *Confirm email does not already have a password
+                        *Confirm "password" and "confirm" match
+                        *Confirm minimum security for password-->
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" />
+                        
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" placeholder="Enter Password" />
+
+                        <label for="password">Confirm password:</label>
+                        <input type="password" id="confirm" name="confirm" placeholder="Re-enter Password" />
+                    </div>
+                    <div class="actions">
+                        <button type="submit">Register</button>
+                        <!--Post should take user back to sign-in page or log them in.-->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

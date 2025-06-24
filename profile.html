@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="./assets/stylesheets/profile.css"/>
+    
+        <title>SimplySchedule Demo</title>
+        <link rel="icon" type="image/x-icon" href="./assets/images/ssfavicon.png" />
+    
+    </head>
+<body>
+    <nav>
+        <a href="./main.html"><img src="./assets/images/denuccis_small_print.png"/></a>
+        <ul>
+            <li>
+                <a title="Current Schedule" href="#schedule">📅</a>
+            </li>
+            <li>
+                <a title="Available Shifts" href="#shifts">🚩</a>
+            </li>
+            <li>
+                <a title="Shift Tracker" href="#shift-tracker">✏️</a>
+            </li>
+            <li>
+                <a title="Current Availability" href="#availability">✔</a>
+            </li>
+            <li>
+                <a title="Time Off" href="#time-off">✈</a>
+            </li>
+            <li>
+                <a title="My Information" href="#info">📋</a>
+            </li>
+            <li>
+                <a title="Settings" href="#settings">⚙️</a>
+            </li>
+            <li>
+                <a title="Log Out" href="./index.html">❌</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <header>
+            <h1>Good to see you, <span>Matthew!</span></h1>
+        </header>
+<!--weekly schedule-->
+        <div id="schedule">
+            <h2 class="section-header">This week's schedule:</h2>
+            <div class="section-grid">
+                <div class="schedule-list">
+                    <div class="schedule-time past-day">
+                        <!--if the day has passed, removed the classes from the buttons-->
+                        <h2>● Sunday, 07/02: 11:00 AM-5:00 PM</h2>
+                        <div class="weekday-buttons">
+                            <button>Cover</button>
+                            <h2>or</h2>
+                            <button>Trade</button>
+                        </div>
+                    </div>
+                    <div class="schedule-time past-day">
+                        <h2>● Monday, 07/03: 11:00 AM-5:00 PM</h2>
+                        <div class="weekday-buttons">
+                            <button>Cover</button>
+                            <h2>or</h2>
+                            <button>Trade</button>
+                        </div>
+                    </div>
+                    <div class="schedule-time active-day" id="bullshitbullshitbullshit=1111" data-itemdate="Saturday 4/20: 12:00 PM - 8:00 PM">
+                        <h2>● Tuesday, 07/04: 11:00 AM-5:00 PM</h2>
+                        <!--should the ability to request a cover/trade be removed at a certain time if the day is active, for example an hour before the shift?-->
+                        <div class="weekday-buttons">
+                            <button class="req-cover">Cover</button>
+                            <h2>or</h2>
+                            <button class="req-trade">Trade</button>
+                        </div>
+                    </div>
+                    <div class="schedule-time">
+                        <h2>● Wednesday, 07/05: Unavailable</h2>
+                        <div class="weekday-buttons">
+                            <button class="req-cover">Cover</button>
+                            <h2>or</h2>
+                            <button class="req-trade">Trade</button>
+                        </div>
+                        <!--Do you think we should distinguish between types of days off? Such as: Off, Not Scheduled, Unavailable, Company Holiday-->
+                    </div>
+                    <div class="schedule-time">
+                        <h2>● Thursday, 07/06: Off</h2>
+                        <div class="weekday-buttons">
+                            <button class="req-cover">Cover</button>
+                            <h2>or</h2>
+                            <button class="req-trade">Trade</button>
+                        </div>
+                    </div>
+                    <div class="schedule-time">
+                        <h2>● Friday, 07/07: Off</h2>
+                        <div class="weekday-buttons">
+                            <button class="req-cover">Cover</button>
+                            <h2>or</h2>
+                            <button class="req-trade">Trade</button>
+                        </div>
+                    </div>
+                    <div class="schedule-time">
+                        <h2>● Saturday, 07/08: 11:00 AM-5:00 PM, 5:00 PM-11:00 PM</h2>
+                        <div class="weekday-buttons">
+                            <button class="req-cover">Cover</button>
+                            <h2>or</h2>
+                            <button class="req-trade">Trade</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--claim-able shift section-->
+        <div id="shifts">
+            <h2 class="section-header">Current available shifts:</h2>
+            <div>
+                <!--Concept: each button links to an individual shift, clicking the button opens a confirmation.
+                Accepting the confirmation sends a request to admin.
+                For open shift: Send / Nevermind
+                For cover: Send / Nevermind
+                For trades: opens a modal to select a shift to trade, then Send / Nevermind
+                aspneeded: id with server "link", data-itemdate= employeefname: day mm/dd: hh:mm - hh:mm-->
+                <div class="single-shift" id="bullshitbullshitbullshit=2020" data-itemdate="Saturday 4/20: 12:00 PM - 8:00 PM">
+                    <h2>● Thursday, 07/06: 5:00 PM-11:00 PM</h2>
+                    <button class="claim-Open">Claim Open Shift</button>
+                </div>
+                <div class="single-shift" id="bullshitbullshitbullshit=2021" data-itemdate="NAMEHERE: Sunday 4/21: 12:00 PM - 8:00 PM">
+                    <h2>● Friday, 07/07: 5:00 PM-11:00 PM</h2>
+                    <button class="offer-trade">Offer Trade</button>
+                </div>
+                <div class="single-shift" id="bullshitbullshitbullshit=2022" data-itemdate="NAMEHERE: Monday 4/22: 12:00 PM - 8:00 PM">
+                    <h2>● Friday, 07/07: 5:00 PM-11:00 PM</h2>
+                    <button class="claim-cover">Claim Cover</button>
+                </div>
+                <!--If they're already scheduled for a certain shift, add the "conflict" class and the following title to the single-shift div,
+                and either remove the class from the button (js relies on the class) or prevent the button from activating w asp-->
+                <div class="single-shift conflict" title="You're already scehduled for this shift.">
+                    <h2>● Saturday, 07/08: 11:00 AM-5:00 PM</h2>
+                    <button>Claim Open Shift</button>
+                </div>
+            </div>
+        </div>
+<!--shift request tracker-->
+        <div id="shift-tracker">
+            <h2 class="section-header">Shift request tracker:</h2>
+            <div>
+                <div class="single-shift" id="blahblahblah1" data-itemdate="Friday, 07/07: 5:00 PM-11:00 PM">
+                    <h2>● Friday, 07/07: 5:00 PM-11:00 PM</h2>
+                    <button class="cancel-btn" data-shifttype="trade">Cancel Trade</button>
+                    <div class="shift-trade-options">
+                        <div class="single-option">
+                            <h2>!</h2>
+                            <div class="single-option-msg">
+                                <p>Snoopy has offered their shift on Monday, 07/10, from 5:00 PM-11:00 PM:</p>
+                                <div class="shift-trade-option-btns">
+                                    <button>Accept</button>
+                                    <button>Reject</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-option">
+                            <h2>!</h2>
+                            <div class="single-option-msg">
+                                <p>Snoopy has offered their shift on Monday, 07/10, from 5:00 PM-11:00 PM:</p>
+                                <div class="shift-trade-option-btns">
+                                    <button>Accept</button>
+                                    <button>Reject</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-option">
+                            <h2>!</h2>
+                            <div class="single-option-msg">
+                                <p>Snoopy has offered their shift on Monday, 07/10, from 5:00 PM-11:00 PM:</p>
+                                <div class="shift-trade-option-btns">
+                                    <button>Accept</button>
+                                    <button>Reject</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--remove other classes from button if not active-->
+                <div class="single-shift claimed">
+                    <h2>● Saturday, 07/08: 5:00 PM-11:00 PM</h2>
+                    <button>Claimed</button>
+                </div>
+                <div class="single-shift" id="blahblahblah2" data-itemdate="Saturday, 07/08: 5:00 PM-11:00 PM">
+                    <h2>● Saturday, 07/08: 5:00 PM-11:00 PM</h2>
+                    <button class="cancel-btn" data-shifttype="cover">Cancel Cover</button>
+                </div>
+            </div>
+        </div>
+<!--availability section-->
+        <div id="availability">
+            <h2 class="section-header">My current availability:</h2>
+            <div class="section-grid">
+                <div class="av-schedule">
+                    <h2 class="list-title">Current</h2>
+                    <h2>● Sunday: All Day</h2>
+                    <h2>● Monday: All Day</h2>
+                    <h2>● Tuesday: All Day</h2>
+                    <h2>● Wednesday: Unavailable</h2>
+                    <h2>● Thursday: 5:00 PM-11:00 PM</h2>
+                    <h2>● Friday: 9:00 AM-12:00 PM, 3:00 PM-11:00 PM</h2>
+                    <h2>● Saturday: All Day</h2>
+                    <div class="av-button-holder">
+                        <button id="av-edit">Edit</button>
+                    </div>
+                </div>
+                <div class="av-schedule">
+                    <h2 class="list-title">Pending</h2>
+                    <h2>→ Sunday: All Day</h2>
+                    <h2>→ Monday: All Day</h2>
+                    <h2>→ Tuesday: All Day</h2>
+                    <h2>→ Wednesday: Unavailable</h2>
+                    <h2>→ Thursday: 5:00 PM-11:00 PM</h2>
+                    <h2>→ Friday: 9:00 AM-12:00 PM, 3:00 PM-11:00 PM</h2>
+                    <h2>→ Saturday: All Day</h2>
+                    <div class="av-button-holder">
+                        <button id="av-cancel">Cancel Pending Change</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="time-off">
+            <h2 class="section-header">My time off:</h2>
+            <div class="section-grid time-grid">
+                <div>
+                    <h2 class="list-title">Upcoming</h2>
+                    <h2>● Thursday, 07/06/2023</h2>
+                    <h2>● Friday, 07/07/2023</h2>
+                </div>
+                <div>
+                    <h2 class="list-title">Pending</h2>
+                    <h2>● Sunday, 12/24/2023</h2>
+                    <button class="request-toff" id="time-req-btn">Request Time Off</button>
+                </div>
+            </div>
+        </div>
+        <div id="info">
+            <h2 class="section-header">My personal information:</h2>
+            <div class="info-list">
+                <h2>● Name: Linkin Park</h2>
+                <h2>● Email: whowantstoknow@gmail.com</h2>
+                <h2>● Phone: 123-456-7890</h2>
+                <h2>● Address: 1234 Lane Drive, Urban City, FL, 000000</h2>
+                <div class="info-button-holder">
+                    <button id="info-edit">Edit</button>
+                </div>
+            </div>
+        </div>
+<!--settings section-->
+        <div id="settings">
+            <h2 class="section-header">Settings and Customization:</h2>
+            <div class="settings-list">
+                <ul>
+                    <h2 class="list-title">Home Page</h2>
+                </ul>
+                <li>
+                    <div class="single-setting">
+                        <label for="homepage-sync"><h2>● Sync Daily Details and week view with selected calendar date:</h2></label>
+                        <input type="checkbox" id="homepage-sync" name="homepage-sync"/>
+                    </div>
+                </li>
+            </div>
+            <div class="settings-btn-holder">
+                <button id="settings-save-btn">Save Changes</button>
+            </div>
+        </div>
+    </main>
+
+<!--............................................................modals-->
+
+<!--confirmation modals-->
+    <div id="confirm-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">Request Sent!</div>
+            <div class="modal-message">
+                <p>Make sure to keep an eye on your request and communicate with other staff as necessary.</p>
+                <div class="modal-button-holder">
+                    <button id="confirm-modal-button">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirm-modal-info" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">Request Sent!</div>
+            <div class="modal-message">
+                <p>Thank you for updating your information!</p>
+                <div class="modal-button-holder">
+                    <button id="confirm-modal-button">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--cancel request modal-->
+    <div id="cancel-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">Cancel Request</div>
+            <div class="modal-message">
+                <p>Are you sure you want to cancel your <span id="cancel-request-type"></span> request for <span id="cancel-shift-date"></span>?</p>
+                <div class="modal-button-holder">
+                    <button id="cancel-confirm">Confirm.</button>
+                    <button id="cancel-close">Nevermind.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--request modals-->
+    <div id="req-cover-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">Request a Cover</div>
+            <div class="modal-message">
+                <p>Would you like to request a cover for your shift on <span id="req-cover-date"></span> from <span id="req-cover-time"></span>?</p>
+                <label class="modal-disclaimer">
+                    <input type="checkbox" id="req-cover-msg" />
+                    By checking this box, you are confirming your understanding that you are still responsible for this shift up until it is claimed by another employee. 
+                    If you are completely unavailable for this shift, please request time off or speak with management regarding this shift.
+                </label>
+                <div class="modal-button-holder">
+                    <button id="req-cover-confirm">Yes, request a cover.</button>
+                    <button id="req-cover-close">Nevermind.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="req-trade-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">Request a Trade</div>
+            <div class="modal-message">
+                <p>Would you like to request to trade your shift (<span id="req-trade-date"></span> from <span id="req-trade-time"></span>) for a different employee's shift?</p>
+                <label class="modal-disclaimer">
+                    <input type="checkbox" id="req-trade-msg" />
+                    By checking this box, you are confirming your understanding that you are still responsible for this shift up until it is claimed by another employee. 
+                    If you are completely unavailable for this shift, please request time off or speak with management regarding this shift.
+                </label>
+                <div class="modal-button-holder">
+                    <button id="req-trade-confirm">Yes, request a trade.</button>
+                    <button id="req-trade-close">Nevermind.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="req-time" class="modal working">
+        <div class="modal-content">
+            <div class="modal-header">Request Time Off</div>
+            <div class="modal-message">
+                <p>Please indicate the dates and times you would like off:</p>
+                <!--checkbox: full day(s) only (if this is checked, times will not appear)
+                start date
+                start time if not full day
+                end date
+                end time if not full day
+                check: all fields filled, all fields filled correctly, end date/time is not before start date/time-->
+                <label class="modal-option">
+                    <input type="checkbox" id="dates-only">
+                    I would like to add times to my date(s).
+                </label>
+                <ul class="modal-edit-list">
+                    <li>
+                        <label for="start-date">Start Date:</label>
+                        <input type="date" id="start-date" name="start-date"/>
+                    </li>
+                    <li id="time-one">
+                        <label for="start-time">Start Time:</label>
+                        <input type="time" id="start-time" name="start-time"/>
+                    </li>
+                    <li>
+                        <label for="end-date">End Date:</label>
+                        <input type="date" id="end-date" name="end-date"/>
+                    </li>
+                    <li id="time-two">
+                        <label for="end-time">End Time:</label>
+                        <input type="time" id="end-time" name="end-time"/>
+                    </li>
+                </ul>
+                <div>
+                    <p>Details:</p>
+                    <textarea id="timeoff-note" placeholder="This is optional."></textarea>
+                </div>
+                <label class="modal-disclaimer">
+                    <input type="checkbox" id="req-time-msg" />
+                    By checking this box, you are confirming your understanding that you are placing a request and it may be denied. 
+                    If this time off is for an emergency or otherwise necessary and time sensitive, please contact management regarding this request.
+                </label>
+                <div class="modal-button-holder">
+                    <button id="req-time-confirm">Yes, request time off.</button>
+                    <button id="req-time-close">Nevermind.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--claim shift modals-->
+    <div id="open-shift-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">Claim Open Shift</div>
+            <div class="modal-message">
+                <p>Would you like to claim the open shift on <span id="open-shift-date"></span> from <span id="open-shift-time"></span>?</p>
+                <div class="modal-button-holder">
+                    <button id="open-shift-confirm">Yes, send for approval.</button>
+                    <button id="open-shift-close">Nevermind.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--employee name needed-->
+    <div id="claim-cover-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">Cover a Shift</div>
+            <div class="modal-message">
+                <p>Would you like to cover <span id="cover-shift-name"></span>'s shift on <span id="cover-shift-date"></span> from <span id="cover-shift-time"></span>?</p>
+                <div class="modal-button-holder">
+                    <button id="cover-shift-confirm">Yes, send for approval.</button>
+                    <button id="cover-shift-close">Nevermind.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--employee name needed-->
+    <div id="offer-trade-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">Offer Trade</div>
+            <div class="modal-message">
+                <p>Select shift(s) to trade:</p>
+                <ul class="modal-list">
+                    <li id="trade-covershift">
+                        <label>
+                            <input type="checkbox" class="trade-shift-option" data-itemdate="covershift"/>
+                            Cover Shift
+                        </label>
+                    </li>
+                    <li id="shift1">
+                        <label>
+                            <input type="checkbox" class="trade-shift-option" data-itemdate="work it harder"/>
+                            First Shift
+                        </label>
+                    </li>
+                    <li id="shift2">
+                        <label>
+                            <input type="checkbox" class="trade-shift-option" data-itemdate="NAMEHERE's Sunday 4/21: 12:00 PM - 8:00 PM"/>
+                            One Shift
+                        </label>
+                    </li>
+                    <li id="shift3">
+                        <label>
+                            <input type="checkbox" class="trade-shift-option" data-itemdate="make it better" />
+                            Two Shift
+                        </label>
+                    </li>
+                    <li id="shift4">
+                        <label>
+                            <input type="checkbox" class="trade-shift-option" data-itemdate="do it faster" />
+                            Red Shift
+                        </label>
+                    </li>
+                    <li id="shift5">
+                        <label>
+                            <input type="checkbox" class="trade-shift-option" data-itemdate="makes us stronger" />
+                            Blue Shift
+                        </label>
+                    </li>
+                    <li id="shift6">
+                        <label>
+                            <input type="checkbox" class="trade-shift-option" data-itemdate="more than ever" />
+                            Old Shift
+                        </label>
+                    </li>
+                    <li id="shift7">
+                        <label>
+                            <input type="checkbox" class="trade-shift-option" data-itemdate="hour after hour" />
+                            New Shift
+                        </label>
+                    </li>
+                    <li id="shift8">
+                        <label>
+                            <input type="checkbox" class="trade-shift-option" data-itemdate="work is never over" />
+                            Last Shift
+                        </label>
+                    </li>
+                </ul>
+                <!--once a shift is selected-->
+                <p id="trade-message">Please select one or more shifts to trade for <span id="trade-shift-name"></span>'s shift on <span id="trade-shift-date"></span> from <span id="trade-shift-time"></span>.</p>
+                <div class="modal-button-holder">
+                    <button id="trade-shift-confirm">Offer trade.</button>
+                    <button id="trade-shift-clear">Clear selection.</button>
+                </div>
+                <button class="modal-close-button" id="trade-shift-close">Nevermind.</button>
+            </div>
+        </div>
+    </div>
+
+<!--edit info modals-->
+<!--see about changing the infomation to a form submit-->
+    <div id="info-edit-modal" class="modal">
+        <!--my intention is to have the input placeholder be the current information to provide a direct comparison-->
+        <div class="modal-content">
+            <div class="modal-header">Edit Your Information</div>
+            <div class="modal-message">
+                <p>Please make sure to double check your information before submitting!</p>
+                <ul class="modal-edit-list">
+                    <li>
+                        <label for="fname">First Name:</label>
+                        <input type="text" id="fname" name="fname" class="info-list-item" placeholder="current fname here">
+                    </li>
+                    <li>
+                        <label for="lname">Last Name:</label>
+                        <input type="text" id="lname" name="lname" class="info-list-item" placeholder="current lname here">
+                    </li>
+                    <li>
+                        <label for="fname">Nickname:</label>
+                        <input type="text" id="bname" name="bname" class="info-list-item" placeholder="current nickname here">
+                    </li>
+                    <li>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" class="info-list-item" placeholder="current email here">
+                        <p class="email-warning">Please note that changing your email here will change the email you use to log in.</p>
+                    </li>
+                    <li>
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone" class="info-list-item" placeholder="current phone number here">
+                    </li>
+                    <li>
+                        <p>Address:</p>
+                        <label for="address1"></label>
+                        <input type="text" id="address1" name="address1" class="info-list-item" placeholder="Address Line 1">
+                        <label for="address2"></label>
+                        <input type="text" id="address2" name="address2" class="info-list-item" placeholder="Address Line 2">
+                        <label for="city"></label>
+                        <input type="text" id="city" name="city" class="info-list-item" placeholder="City">
+                        <label for="state"></label>
+                        <input type="text" id="state" name="state" class="info-list-item" placeholder="State">
+                        <label for="zip"></label>
+                        <input type="text" id="zip" name="zip" class="info-list-item" placeholder="Zip">
+
+                    </li>
+                </ul>
+                <div class="modal-button-holder">
+                    <button id="edit-info-confirm">Update my information.</button>
+                    <button id="edit-info-close">Nevermind.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="av-edit-modal" class="modal">
+        <!--auto fill to start so they dont have to re-enter the whole schedule-->
+        <div class="modal-content">
+            <div class="modal-header">Edit Your Availability</div>
+            <div class="modal-message">
+                <p>Please make sure to double check your information before submitting!</p>
+                <ul class="modal-list modal-edit-list modal-av-edit">
+                    <li class="av-input-group">
+                        <div class="main-inputs">
+                            <p>● Sunday:</p>
+                            <div class="av-mods">
+                                <div class="av-allday">
+                                    <label class="allday-label">
+                                        <input id="sun-allday" class="allday-trigger" type="checkbox" />
+                                        All Day
+                                    </label>
+                                </div>
+                                <div class="av-toggle">
+                                    <div class="av-radio-option">
+                                        <input id="av-toggle-sun" name="toggle-sun" type="radio">
+                                        <label for="av-toggle-sun">Available</label><br>
+                                    </div>
+                                    <div class="av-radio-option">
+                                        <input id="unav-toggle-sun" name="toggle-sun" type="radio">
+                                        <label for="unav-toggle-sun">Unavailable</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="av-hour-set" id="sun-select">
+                                <label for="sun-av-start"></label>
+                                <!--i would like the value to be set to their current availability-->
+                                <input type="time" id="sun-av-start" name="sun-av-start" value="current time here"/>
+                                <p class="text-center">to</p>
+                                <label for="sun-av-end"></label>
+                                <input type="time" id="sun-av-end" name="sun-av-end"/>
+                                <!--when clicked, add second slot and disable button-->
+                                <p title="Add second availability slot." class="av-add-button" id="addsun">+</p>
+                            </div>
+                        </div>
+                        <div class="av-edit-notes">
+                            <p>Notes:</p>
+                            <textarea id="sun-notes"></textarea>
+                        </div>
+                    </li>
+                    <li class="av-input-group">
+                        <div class="main-inputs">
+                            <p>● Monday:</p>
+                            <div class="av-mods">
+                                <div class="av-allday">
+                                    <label class="allday-label">
+                                        <input id="mon-allday" class="allday-trigger" type="checkbox" />
+                                        All Day
+                                    </label>
+                                </div>
+                                <div class="av-toggle">
+                                    <div class="av-radio-option">
+                                        <input id="av-toggle-mon" name="toggle-mon" type="radio">
+                                        <label for="av-toggle-mon">Available</label><br>
+                                    </div>
+                                    <div class="av-radio-option">
+                                        <input id="unav-toggle-mon" name="toggle-mon" type="radio">
+                                        <label for="unav-toggle-mon">Unavailable</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="av-hour-set" id="mon-select">
+                                <label for="mon-av-start"></label>
+                                <!--i would like the value to be set to their current availability-->
+                                <input type="time" id="mon-av-start" name="mon-av-start" value="current time here"/>
+                                <p class="text-center">to</p>
+                                <label for="mon-av-end"></label>
+                                <input type="time" id="mon-av-end" name="mon-av-end"/>
+                                <!--when clicked, add second slot and disable button-->
+                                <p title="Add second availability slot." class="av-add-button" id="addmon">+</p>
+                            </div>
+                        </div>
+                        <div class="av-edit-notes">
+                            <p>Notes:</p>
+                            <textarea id="mon-notes"></textarea>
+                        </div>
+                    </li>
+                    <li class="av-input-group">
+                        <div class="main-inputs">
+                            <p>● Tuesday:</p>
+                            <div class="av-mods">
+                                <div class="av-allday">
+                                    <label class="allday-label">
+                                        <input id="tue-allday" class="allday-trigger" type="checkbox" />
+                                        All Day
+                                    </label>
+                                </div>
+                                <div class="av-toggle">
+                                    <div class="av-radio-option">
+                                        <input id="av-toggle-tue" name="toggle-tue" type="radio">
+                                        <label for="av-toggle-tue">Available</label><br>
+                                    </div>
+                                    <div class="av-radio-option">
+                                        <input id="unav-toggle-tue" name="toggle-tue" type="radio">
+                                        <label for="unav-toggle-tue">Unavailable</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="av-hour-set" id="tue-select">
+                                <label for="tue-av-start"></label>
+                                <!--i would like the value to be set to their current availability-->
+                                <input type="time" id="tue-av-start" name="tue-av-start" value="current time here"/>
+                                <p class="text-center">to</p>
+                                <label for="tue-av-end"></label>
+                                <input type="time" id="tue-av-end" name="tue-av-end"/>
+                                <!--when clicked, add second slot and disable button-->
+                                <p title="Add second availability slot." class="av-add-button" id="addtue">+</p>
+                            </div>
+                        </div>
+                        <div class="av-edit-notes">
+                            <p>Notes:</p>
+                            <textarea id="tue-notes"></textarea>
+                        </div>
+                    </li>
+                    <li class="av-input-group">
+                        <div class="main-inputs">
+                            <p>● Wednesday:</p>
+                            <div class="av-mods">
+                                <div class="av-allday">
+                                    <label class="allday-label">
+                                        <input id="wed-allday" class="allday-trigger" type="checkbox" />
+                                        All Day
+                                    </label>
+                                </div>
+                                <div class="av-toggle">
+                                    <div class="av-radio-option">
+                                        <input id="av-toggle-wed" name="toggle-wed" type="radio">
+                                        <label for="av-toggle-wed">Available</label><br>
+                                    </div>
+                                    <div class="av-radio-option">
+                                        <input id="unav-toggle-wed" name="toggle-wed" type="radio">
+                                        <label for="unav-toggle-wed">Unavailable</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="av-hour-set" id="wed-select">
+                                <label for="wed-av-start"></label>
+                                <!--i would like the value to be set to their current availability-->
+                                <input type="time" id="wed-av-start" name="wed-av-start" value="current time here"/>
+                                <p class="text-center">to</p>
+                                <label for="wed-av-end"></label>
+                                <input type="time" id="wed-av-end" name="wed-av-end"/>
+                                <!--when clicked, add second slot and disable button-->
+                                <p title="Add second availability slot." class="av-add-button" id="addwed">+</p>
+                            </div>
+                        </div>
+                        <div class="av-edit-notes">
+                            <p>Notes:</p>
+                            <textarea id="wed-notes"></textarea>
+                        </div>
+                    </li>
+                    <li class="av-input-group">
+                        <div class="main-inputs">
+                            <p>● Thursday:</p>
+                            <div class="av-mods">
+                                <div class="av-allday">
+                                    <label class="allday-label">
+                                        <input id="thu-allday" class="allday-trigger" type="checkbox" />
+                                        All Day
+                                    </label>
+                                </div>
+                                <div class="av-toggle">
+                                    <div class="av-radio-option">
+                                        <input id="av-toggle-thu" name="toggle-thu" type="radio">
+                                        <label for="av-toggle-thu">Available</label><br>
+                                    </div>
+                                    <div class="av-radio-option">
+                                        <input id="unav-toggle-thu" name="toggle-thu" type="radio">
+                                        <label for="unav-toggle-thu">Unavailable</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="av-hour-set" id="thu-select">
+                                <label for="thu-av-start"></label>
+                                <!--i would like the value to be set to their current availability-->
+                                <input type="time" id="thu-av-start" name="thu-av-start" value="current time here"/>
+                                <p class="text-center">to</p>
+                                <label for="thu-av-end"></label>
+                                <input type="time" id="thu-av-end" name="thu-av-end"/>
+                                <!--when clicked, add second slot and disable button-->
+                                <p title="Add second availability slot." class="av-add-button" id="addthu">+</p>
+                            </div>
+                        </div>
+                        <div class="av-edit-notes">
+                            <p>Notes:</p>
+                            <textarea id="thu-notes"></textarea>
+                        </div>
+                    </li>
+                    <li class="av-input-group">
+                        <div class="main-inputs">
+                            <p>● Friday:</p>
+                            <div class="av-mods">
+                                <div class="av-allday">
+                                    <label class="allday-label">
+                                        <input id="fri-allday" class="allday-trigger" type="checkbox" />
+                                        All Day
+                                    </label>
+                                </div>
+                                <div class="av-toggle">
+                                    <div class="av-radio-option">
+                                        <input id="av-toggle-fri" name="toggle-fri" type="radio">
+                                        <label for="av-toggle-fri">Available</label><br>
+                                    </div>
+                                    <div class="av-radio-option">
+                                        <input id="unav-toggle-fri" name="toggle-fri" type="radio">
+                                        <label for="unav-toggle-fri">Unavailable</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="av-hour-set" id="fri-select">
+                                <label for="fri-av-start"></label>
+                                <!--i would like the value to be set to their current availability-->
+                                <input type="time" id="fri-av-start" name="fri-av-start" value="current time here"/>
+                                <p class="text-center">to</p>
+                                <label for="fri-av-end"></label>
+                                <input type="time" id="fri-av-end" name="fri-av-end"/>
+                                <!--when clicked, add second slot and disable button-->
+                                <p title="Add second availability slot." class="av-add-button" id="addfri">+</p>
+                            </div>
+                        </div>
+                        <div class="av-edit-notes">
+                            <p>Notes:</p>
+                            <textarea id="fri-notes"></textarea>
+                        </div>
+                    </li>
+                    <li class="av-input-group">
+                        <div class="main-inputs">
+                            <p>● Saturday:</p>
+                            <div class="av-mods">
+                                <div class="av-allday">
+                                    <label class="allday-label">
+                                        <input id="sat-allday" class="allday-trigger" type="checkbox" />
+                                        All Day
+                                    </label>
+                                </div>
+                                <div class="av-toggle">
+                                    <div class="av-radio-option">
+                                        <input id="av-toggle-sat" name="toggle-sat" type="radio">
+                                        <label for="av-toggle-sat">Available</label><br>
+                                    </div>
+                                    <div class="av-radio-option">
+                                        <input id="unav-toggle-sat" name="toggle-sat" type="radio">
+                                        <label for="unav-toggle-sat">Unavailable</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="av-hour-set" id="sat-select">
+                                <label for="sat-av-start"></label>
+                                <!--i would like the value to be set to their current availability-->
+                                <input type="time" id="sat-av-start" name="sat-av-start" value="current time here"/>
+                                <p class="text-center">to</p>
+                                <label for="sat-av-end"></label>
+                                <input type="time" id="sat-av-end" name="sat-av-end"/>
+                                <!--when clicked, add second slot and disable button-->
+                                <p title="Add second availability slot." class="av-add-button" id="addsat">+</p>
+                            </div>
+                        </div>
+                        <div class="av-edit-notes">
+                            <p>Notes:</p>
+                            <textarea id="sat-notes"></textarea>
+                        </div>
+                    </li>
+                </ul>
+                <div>
+                    <label for="av-effective">Effective Date:</label>
+                    <input type="date" id="av-effective" name="av-effective">
+                </div>
+                <label class="modal-disclaimer">
+                    <input type="checkbox" id="av-edit-msg" />
+                    By checking this box, you are acknowledging that changing your availability may significantly affect your 
+                    shift opportunities.
+                </label>
+                <div class="modal-button-holder">
+                    <button id="av-edit-confirm">Update my availability.</button>
+                    <button id="av-edit-close">Nevermind.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="error-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">An Error Occurred</div>
+            <div class="modal-message">
+                <p id="error-message">Error message here.</p>
+                <div class="modal-button-holder">
+                    <button id="error-modal-button">Okay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form id="submit-form">
+        <textarea id="info-type"></textarea>
+        <textarea id="info-main"></textarea>
+        <button type="submit" id="form-btn"></button>
+    </form>
+
+    <script src="./assets/js/profile.js"></script>
+</body>
+</html>

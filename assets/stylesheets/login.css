@@ -1,0 +1,255 @@
+/*--------general styles*/
+
+*
+{
+    padding: 0px;
+    margin: auto auto;
+}
+
+:root
+{
+    --blue: lightskyblue;
+}
+
+/*--------body styles*/
+body
+{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-grid
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+a
+{
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color: inherit;
+    text-decoration: none;
+}
+
+/*--------header styles*/
+header
+{
+    background-color: grey;
+    height: 100vh;
+    width: 50vw;
+    position: relative;
+}
+
+header div
+{
+    text-align: center;
+    color: white;
+    margin-top: 44vh;
+    height: fit-content;
+}
+
+.arrow:before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-width: 0 30vh 50vh 0;
+    border-style: solid;
+    border-color: transparent rgba(255,255,255) transparent rgba(255,255,255);
+}
+  
+.arrow:after
+{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-width: 0vh 0vh 50vh 30vh;
+    border-style: solid;
+    border-color: rgba(255,255,255) transparent rgba(255,255,255) transparent;
+}
+
+.title
+{
+    font-size: 5.5vw;
+}
+
+.title span
+{
+    color: var(--blue);
+}
+
+.subtitle
+{
+    font-weight: 400;
+    font-size: 2.5vw;
+}
+
+/*--------main styles*/
+.formatting
+{
+    display: grid;
+    background-color: grey;
+    border-radius: 12px;
+    margin: 30px;
+    padding: 30px;
+}
+
+.reg-formatting
+{
+    width: fit-content;
+    margin: 30px auto;
+}
+
+.form-title
+{
+    font-size: 3vw;
+    font-weight: 400;
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.inputs
+{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.inputs label
+{
+    color: white;
+    font-size: 2vw;
+    margin-left: 3px;
+}
+
+.inputs input
+{
+    font-size: 14pt;
+    color: var(--blue);
+    margin: -2px 0px 20px 0px;
+    padding: 15px 10px;
+    border-radius: 6px;
+    border: none;
+}
+
+.inputs input:focus
+{
+   outline: 3px solid var(--blue);
+}
+
+.actions
+{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.actions button
+{
+    padding: 10px 30px;
+    font-size: 14pt;
+    color: grey;
+    background: white;
+    border: none;
+    border-radius: 6px;
+    margin: 10px auto;
+    transition: all 400ms ease;
+}
+
+.actions button:hover
+{
+    background-color: var(--blue);
+    color: white;
+}
+
+.formatting p
+{
+    text-align: center;
+}
+
+.formatting a
+{
+    transition: all 400ms ease;
+}
+
+.formatting a:hover
+{
+    color: white;
+}
+
+.notice
+{
+    width: 500px;
+    padding: 0px 5px 15px 5px;
+    color: white;
+}
+
+.error
+{
+    font-weight: 700;
+    color: white;
+}
+
+@media screen and (max-width: 856px)
+{
+    .main-grid
+    {
+        grid-template-columns: 1fr;
+    }
+
+    header
+    {
+        background-color: grey;
+        width: 100vw;
+        height: 15vh;
+    }
+
+    header div
+    {
+        text-align: center;
+        color: white;
+        margin-top: 1.5vh;
+        height: fit-content;
+    }
+
+    .arrow:before
+    {
+        bottom: 0px;
+        right: 0px;
+        border-width: 0px 0px 10vw 100vw;
+        border-color: rgba(255,255,255) transparent rgba(255,255,255) transparent;
+    }
+      
+    .arrow:after
+    {
+        bottom: 0px;
+        left: 0px;
+        border-width: 0 100vw 10vw 0;
+        border-color: rgba(255,255,255) transparent rgba(255,255,255) transparent;
+    }
+
+    .title
+    {
+        font-size: 10vw;
+    }
+
+    .subtitle
+    {
+        font-size: 5vw;
+    }
+
+    .form-title
+    {
+        font-size: 3vh;
+    }
+
+    .inputs label
+    {
+        font-size: 2vh;
+    }
+}

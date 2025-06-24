@@ -1,0 +1,616 @@
+/*--------general styles*/
+
+*
+{
+    padding: 0px;
+    margin: auto auto;
+}
+
+:root
+{
+    --blue: lightskyblue;
+
+    --weight: 400;
+
+    --click-transition: all 400ms ease;
+}
+
+/*--------body styles*/
+body
+{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: grey;
+}
+
+.main-grid
+{
+    display: grid;
+    grid-template-columns: 25% 1fr;
+}
+
+a
+{
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h3
+{
+    color: white;
+    font-size: 2vw;
+    font-weight: var(--weight);
+}
+
+.text-box
+{
+    background-color: white;
+    border-radius: 12px;
+}
+
+/*---------nav styles*/
+
+nav
+{
+    background-color: grey;
+    height: 100vh;
+}
+
+.nav-header
+{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 1vw;
+    color: white;
+    text-align: center;
+}
+
+.nav-header div h2
+{
+    font-size: 2.5vw;
+    font-weight: var(--weight);
+}
+
+.manager-button, header button, .profile-button, .weekday-info button, .logout-btn
+{
+    border: none;
+    width: 100%;
+    border-radius: 12px;
+    padding: 1vh 3vw;
+    background-color: var(--blue);
+    color: white;
+    font-size: 1.5vw;
+    transition: var(--click-transition);
+}
+
+.manager-button:hover, header button:hover, .weekday-info button:hover, .modal-button-holder button:hover
+{
+    background-color: grey;
+    cursor: pointer;
+}
+
+.manager-button, .logout-btn
+{
+    font-size: 1vw;
+}
+
+.logout-btn
+{
+    margin-top: 1vh;
+}
+
+.manager-button:hover, .logout-btn:hover
+{
+    color: grey;
+    background-color: white;
+}
+
+.company-info-box
+{
+    text-align: center;
+    margin-bottom: 2vh;
+}
+
+.company-info-box h3
+{
+    margin: 1vh 0.5vw;
+}
+
+.company-info-box ul li
+{
+    list-style-type: none;
+    background-color: white;
+    border-radius: 15px;
+    margin: 1vh 1vw;
+    padding: 0.5vh;
+}
+
+.company-info-box ul li h4, .employee-info ul li p
+{
+    color: grey;
+    font-size: 1.5vw;
+    font-weight: var(--weight);
+}
+
+.employee-profile
+{
+    padding: 1vw;
+}
+
+.profile-button
+{
+    margin-bottom: 2px;
+}
+
+.profile-button:hover
+{
+    color: grey;
+    background-color: white;
+    cursor: pointer;
+}
+
+.stat-grid
+{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 0.75vw;
+    margin: 1vh 0;
+}
+
+.stat-grid .text-box
+{
+    height: 100%;
+    width: 100%;
+}
+
+.stat-text
+{
+    padding: 5px 7px;
+    color: grey;
+}
+
+.small-cal-header
+{
+    height: fit-content;
+    width: 100%;
+    background-color: var(--blue);
+    color: white;
+    border-radius: 12px 12px 0 0;
+}
+
+.small-cal-header p
+{
+    padding: 5px;
+    text-align: center;
+}
+
+.bold-date
+{
+    font-size: 1vw;
+    text-align: center;
+    color: grey;
+    margin: 5px;
+}
+
+.employee-info
+{
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0px 3px;
+}
+
+.employee-info ul
+{
+    list-style-type: none;
+    padding: 0.5vh;
+}
+
+/*--------main styles*/
+
+main
+{
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
+
+/*--------header styles*/
+
+header
+{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+}
+
+header h1
+{
+    width: 100%;
+    font-size: 4vw;
+    color: grey;
+    margin-left: 1vw;
+}
+
+header h1 span
+{
+    color: var(--blue);
+}
+
+header button
+{
+    margin-top: 2px;
+}
+
+/*weekly schedule styles*/
+
+.week-change
+{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    background-color: grey;
+    margin: 1vh 1vw;
+    padding: 7px 0px 5px 0px;
+    border-radius: 12px;
+}
+
+.week-change h2
+{
+    color: white;
+}
+
+.carousel-holder
+{
+    width: 73vw;
+    margin: 1vh 1vw 1vh 1vw;
+}
+
+.weekday
+{
+    background-color: grey;
+    height: 120px;
+    width: 200px;
+    border-radius: 12px;
+}
+
+.weekday-date
+{
+    background-color: var(--blue);
+    border-radius: 12px 12px 0 0;
+    padding-top: 2px;
+    width: 100%;
+    height: 25%;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+}
+
+.weekday-info
+{
+    margin: 0px 7px;
+    height: 80px;
+    background-color: white;
+    border-radius: 0 0 12px 12px;
+    display: grid;
+    gap: 0px;
+    grid-template-rows: 1fr 1fr;
+    font-size: 20px;
+    text-align: center;
+    color: grey;
+}
+
+.weekday-btn-grid
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    height: 30px;
+}
+
+.weekday-btn-grid button, .weekday-btn-grid .cancel-btn
+{
+    font-size: 16px;
+    width: 70px;
+    padding: 5px 10px;
+}
+
+.weekday-btn-grid .cancel-btn
+{
+    width: 150px;
+}
+
+.swiper-button-next, .swiper-button-prev
+{
+    color: var(--blue);
+}
+
+.schedule-details
+{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1vw;
+    height: 100%;
+}
+
+/*daily styles*/
+
+.daily-container
+{
+    background-color: grey;
+    width: 100%;
+    border-radius: 12px;
+    margin: 1vh 1vw;
+}
+
+.daily-date
+{
+    background-color: var(--blue);
+    border-radius: 12px 12px 0 0;
+    padding: 5px 0;
+    width: 100%;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+}
+
+.daily-info
+{
+    background-color: white;
+    margin: 0px 10px 10px 10px;
+    padding: 2px 4px;
+    border-radius: 0 0 12px 12px;
+    color: grey;
+    max-height: 435px;
+    overflow-y: auto;
+}
+
+.shift-item
+{
+    border-bottom: 2px solid grey;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1vh 1vw;
+}
+
+.shift-item:last-child
+{
+    border-bottom: none;
+}
+
+.center-item
+{
+    text-align: center;
+}
+
+/*monthly styles*/
+
+.calendar
+{
+    background-color: grey;
+    width: 95.75%;
+    border-radius: 12px;
+    margin: 1vh 1vw;
+}
+
+.calendar-header
+{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    background-color: var(--blue);
+    border-radius: 12px 12px 0 0;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 2vw;
+    color: white;
+    text-align: center;
+}
+
+.arrow
+{
+    border: solid grey;
+    height: 10px;
+    width: 10px;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.week-change .arrow
+{
+    border-color: var(--blue);
+}
+
+.right
+{
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+  
+.left
+{
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.calendar-body
+{
+    background-color: white;
+    border-radius: 0 0 12px 12px;
+    margin: 0px 10px 10px 10px;
+    padding: 2px 10px 10px 10px;
+    min-height: 435px;
+    max-height: 436px;
+    overflow: auto;
+}
+
+.week-header
+{
+    border-bottom: 2px solid grey;
+    padding: 4px 0px;
+}
+
+.week-header th h4
+{
+    width: 6vw;
+    color: grey;
+    font-weight: var(--weight);
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.calendar-body tr td
+{
+    height: 75px;
+    width: 5vw;
+    border: 2px solid grey;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+.calendar-body tr td h4
+{
+    position: absolute;
+    top: 0px;
+    left: 2px;
+    color: grey;
+}
+
+.calendar-body tr td p
+{
+    color: grey;
+    margin: 2px;
+    font-size: 10px;
+}
+
+.calendar-body .av-indicator
+{
+    position: absolute;
+    bottom: 0px;
+    left: 2px;
+}
+
+.calendar-body .cal-day-current
+{
+    border: 2px solid var(--blue);
+}
+
+.green
+{
+    color: green
+}
+
+.yellow
+{
+    color: rgb(255, 217, 0);
+}
+
+.red
+{
+    color: brown;
+}
+
+.grey
+{
+    color: grey;
+}
+
+/*modal styles*/
+
+.modal
+{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.3);
+}
+
+.modal-content
+{
+    background-color: grey;
+    margin: 10% auto;
+    border-radius: 12px;
+    width: 45%;
+    padding-bottom: 10px;
+}
+
+.modal-header
+{
+    background-color: var(--blue);
+    color: white;
+    border-radius: 12px 12px 0 0;
+    text-align: center;
+    font-size: 3vw;
+    padding: 5px 0px;
+}
+
+.working
+{
+    display: inline-block;
+}
+
+.modal-message
+{
+    background-color: white;
+    color: grey;
+    font-size: 25px;
+    border-radius: 0 0 12px 12px;
+    margin: 0px 10px;
+    padding: 5px;
+}
+
+.modal-button-holder
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+
+.modal-button-holder a
+{
+    width: 100%;
+}
+
+.modal-button-holder button
+{
+    width: 100%;
+    display: inline-block;
+    border: none;
+    border-radius: 12px;
+    padding: 5px 10px;
+    background-color: var(--blue);
+    color: white;
+    font-size: 24px;
+    transition: var(--click-transition);
+}
+
+#confirm-modal .modal-button-holder
+{
+    grid-template-columns: 1fr;
+    margin-top: 5px;
+}
+
+.modal-disclaimer
+{
+    display: inline-block;
+    font-size: 12px;
+}
+
+#submit-form
+{
+    margin-left: 200px;
+    display: none;
+}

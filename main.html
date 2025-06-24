@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+        <link rel="stylesheet" href="./assets/stylesheets/homepage.css" />
+    
+        <title>SimplySchedule</title>
+        <link rel="icon" type="image/x-icon" href="./assets/images/ssfavicon.png" />
+    
+    </head>
+<body>
+<div class="main-grid">
+<!--grey sidebar-->
+    <nav>
+        <div class="nav-header">
+            <a href= '/'><img src="./assets/images/denuccis_small_print.png" style="width: 100px;"/></a>
+            <div>
+                <h2>Constantine</h2>
+                <!--add manager button if employee has admin rights-->
+                <a href="./admin.html"><button class="manager-button">Manager Page</button></a>
+            </div>
+        </div>
+        <div class="company-info-box">
+            <h3>Long Name To Test Wrapping Incorporated Contact Information</h3>
+            <ul>
+                <li>
+                    <h4>company.address</h4>
+                </li>
+                <li>
+                    <h4>company.email</h4>
+                </li>
+                <li>
+                    <h4>company.phone</h4>
+                </li>
+            </ul>
+        </div>
+<!--employee info-->
+        <div class="employee-profile">
+            <a href="./profile.html"><button class="profile-button">My Profile</button></a>
+            <div class="profile-body">
+                <div class="stat-grid">
+                    <div class="text-box">
+                        <p class="stat-text">
+                            You are currently scheduled for 6 shifts this week. 
+                            There are 5 open shifts to be claimed.
+                        </p>
+                    </div>
+                    <div class="text-box">
+                        <div class="small-cal-header">
+                            <p>Employee Since</p>
+                        </div>
+                        <div class="bold-date">
+                            <h2>01/01/2023</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-box employee-info">
+                    <ul>
+                        <li>
+                            <p>Name: employee.firstname employee.lastname</p>
+                        </li>
+                        <li>
+                            <p>Email: employee.email</p>
+                        </li>
+                        <li>
+                            <p>Phone: employee.phone</p>
+                        </li>
+                        <li>
+                            <p>Address: 1234 Lane Drive, Fernandina Beach, FL, 12345</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <a href="./index.html"><button class="logout-btn">Log Out</button></a>
+        </div>
+    </nav>
+<!--myschedule section-->
+    <main>
+        <header>
+            <h1><span>My</span>Schedule</h1>
+            <a href='./about.html'><button>About</button></a>
+        </header>
+<!--weekly carousel-->
+        <div class="schedule-info">
+            <div class="week-change">
+                <p><i class="arrow left"></i></p>
+                <h2>01/01/23 - 01/07/2023</h3>
+                <p><i class="arrow right"></i></p>
+            </div>
+            <div class="swiper mySwiper carousel-holder">
+                <div class="swiper-wrapper carousel">
+<!--single slides-->
+                    <div class="swiper-slide weekday" id="mainpagetest" data-itemdate="Workday Date: Time AM - Time PM">
+                        <div class="weekday-date">
+                            <p>01/01</p>
+                        </div>
+                        <div class="weekday-info">
+                            <p>Closed</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide weekday" id="mainpagetest1" data-itemdate="Workday Date: Time AM - Time PM">
+                        <div class="weekday-date">
+                            <p>01/02</p>
+                        </div>
+                        <div class="weekday-info">
+                            <p>Time Off: All Day</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide weekday" id="mainpagetest2" data-itemdate="Workday Date: Time AM - Time PM">
+                        <div class="weekday-date">
+                            <p>01/03</p>
+                        </div>
+                        <div class="weekday-info">
+                            <p>1:00pm - 9:00pm</p>
+                            <div class="weekday-btn-grid">
+                                <!--if scheduled, show buttons-->
+                                <button class="req-cover">Cover</button>
+                                <button class="req-trade">Trade</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide weekday" id="mainpagetest3" data-itemdate="Workday Date: Time AM - Time PM">
+                        <div class="weekday-date">
+                            <p>01/04</p>
+                        </div>
+                        <div class="weekday-info">
+                            <p>01:00pm - 09:00pm</p>
+                            <div class="weekday-btn-grid">
+                                <button class="cancel-btn" data-shifttype="cover">Cancel Cover</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide weekday" id="mainpagetest4" data-itemdate="Workday Date: Time AM - Time PM">
+                        <div class="weekday-date">
+                            <p>01/05</p>
+                        </div>
+                        <div class="weekday-info">
+                            <p>1:00pm - 9:00pm</p>
+                            <div class="weekday-btn-grid">
+                                <button class="req-cover">Cover</button>
+                                <button class="req-trade">Trade</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide weekday" id="mainpagetest5" data-itemdate="Workday Date: Time AM - Time PM">
+                        <div class="weekday-date">
+                            <p>01/06</p>
+                        </div>
+                        <div class="weekday-info">
+                            <p>10:00am - 04:00pm, 6:00pm - 8:00pm</p>
+                            <div class="weekday-btn-grid">
+                                <button class="req-cover">Cover</button>
+                                <button class="req-trade">Trade</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide weekday" id="mainpagetest6" data-itemdate="Workday Date: Time AM - Time PM">
+                        <div class="weekday-date">
+                            <p>01/07</p>
+                        </div>
+                        <div class="weekday-info">
+                            <p>Not Scheduled</p>
+                        </div>
+                    </div>
+                </div>
+<!--end of single slides-->
+<!--carousel buttons-->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+<!--non-carousel information-->
+            <div class="schedule-details">
+<!--daily information-->
+                <div class="daily-container">
+                    <div class="daily-date">
+                        <h3>Daily Details for</h3>
+                        <h3>date.current</h3>
+                    </div>
+                    <div class="daily-info">
+                        <div class="shift-item">
+                            <div class="center-item">
+                                <h4>11:00 AM-5:00 PM</h4>
+                                <p>Clock in: 11:00 AM</p>
+                                <p>Clock out: 5:01 PM</p>
+                            </div>
+                            <div class="center-item">
+                                <h4>Johnson Compensation Jr</h4>
+                                <p>Assistant Manager</p>
+                            </div>   
+                        </div>
+                        <div class="shift-item">
+                            <div class="center-item">
+                                <h4>11:00 AM-5:00 PM</h4>
+                                <p>Clock in: 11:00 AM</p>
+                                <p>Clock out: 5:01 PM</p>
+                            </div>
+                            <div class="center-item">
+                                <h4>Hey You</h4>
+                                <p>Assistant Manager</p>
+                            </div>
+                        </div>
+                        <div class="shift-item">
+                            <div class="center-item">
+                                <h4>11:00 AM-5:00 PM</h4>
+                                <p>Clock in: 11:00 AM</p>
+                                <p>Clock out: 5:01 PM</p>
+                            </div>
+                            <div class="center-item">
+                                <h4>Snoopy Brown</h4>
+                                <p></p>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="shift-item">
+                            <div class="center-item">
+                                <h4>11:00 AM-5:00 PM</h4>
+                                <p>Clock in: 11:00 AM</p>
+                                <p>Clock out: 5:01 PM</p>
+                            </div>
+                            <div class="center-item">
+                                <h4>Princess Cinderella</h4>
+                                <p>Training</p>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="shift-item">
+                            <div class="center-item">
+                                <h4>5:00 PM-11:00 PM</h4>
+                                <p>Clock in: 5:00 PM</p>
+                                <p>Clock out: 10:47 PM</p>
+                            </div>
+                            <div class="center-item">
+                                <h4>Richard Nixon</h4>
+                                <p>General Manager</p>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="shift-item">
+                            <div class="center-item">
+                                <h4>5:00 PM-11:00 PM</h4>
+                                <p>Clock in: 5:00 PM</p>
+                                <p>Clock out: 10:47 PM</p>
+                            </div>
+                            <div class="center-item">
+                                <h4>Darth Vader</h4>
+                                <p>Assistant Manager</p>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="shift-item">
+                            <div class="center-item">
+                                <h4>5:00 PM-11:00 PM</h4>
+                                <p>Clock in: 5:00 PM</p>
+                                <p>Clock out: 10:47 PM</p>
+                            </div>
+                            <div class="center-item">
+                                <h4>Steve from Blues Clues</h4>
+                                <p></p>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="shift-item">
+                            <div class="center-item">
+                                <h4>5:00 PM-11:00 PM</h4>
+                                <p>Clock in: 5:00 PM</p>
+                                <p>Clock out: 10:47 PM</p>
+                            </div>
+                            <div class="center-item">
+                                <h4>Captain America</h4>
+                                <p></p>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="shift-item">
+                            <div class="center-item">
+                                <h4>5:00 PM-11:00 PM</h4>
+                                <p>Clock in: 5:00 PM</p>
+                                <p>Clock out: 10:47 PM</p>
+                            </div>
+                            <div>
+                                <h4>Just Jimmy</h4>
+                                <p></p>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="shift-item">
+                            <div class="center-item">
+                                <h4>5:00 PM-11:00 PM</h4>
+                                <p>Clock in: 5:00 PM</p>
+                                <p>Clock out: 10:47 PM</p>
+                            </div>
+                            <div>
+                                <h4>Beatrice LeBeau</h4>
+                                <p></p>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="shift-item">
+                            <div class="center-item">
+                                <h4>7:00 PM-11:00 PM</h4>
+                                <p>N/A</p>
+                                <!--N/A if unclaimed, No Show if claimed-->
+                            </div>
+                            <div class="center-item">
+                                <h4>Open Shift</h4>
+                                <p>Unclaimed</p>
+                                <!--If open shift is unclaimed by the end of the day, mark as such?-->
+                            </div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+<!--monthly calendar-->
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <p><i class="arrow left"></i></p>
+                        <h2>January 2023</h2>
+                        <p><i class="arrow right"></i></p>
+                    </div>
+                    <div class="calendar-body">
+                        <table>
+                            <tr class="week-header">
+                                <th>
+                                    <h4>Sun</h4>
+                                </th>
+                                <th>
+                                    <h4>Mon</h4>
+                                </th>
+                                <th>
+                                    <h4>Tue</h4>
+                                </th>
+                                <th>
+                                    <h4>Wed</h4>
+                                </th>
+                                <th>
+                                    <h4>Thu</h4>
+                                </th>
+                                <th>
+                                    <h4>Fri</h4>
+                                </th>
+                                <th>
+                                    <h4>Sat</h4>
+                                </th>
+                            </tr>
+                            <tr>
+<!--Each day will toggle a change to the Daily Details when clicked
+    and display any information associated with that day,
+    whether there's a schedule or not.
+    If there is genuinely nothing, Daily Details will need a default message
+    such as "Nothing to Display"-->
+                                <td class="cal-day-current">
+                                    <h4>1</h4>
+                                    <p>New Year's Day</p>
+                                    <p>Company Holiday</p>
+                                    <div class="av-indicator yellow" title="You are available today, but not on the schedule.">
+                                    <!--this will need to be assigned a class to change color
+                                        and a title to explain the mark
+                                        the key for these items will still be in the about bc you can't hover on mobile-->
+                                        ●
+                                    <div>
+                                </td>
+                                <td>
+                                    <h4>2</h4>
+                                    <div class="av-indicator green" title="You are scheduled today.">
+                                        ✔
+                                    </div>
+                                </td>
+                                <td>
+                                    <h4>3</h4>
+                                    <div class="av-indicator red" title="You are unavailable today.">
+                                        X
+                                    </div>
+                                </td>
+                                <td>
+                                    <h4>4</h4>
+                                    <div class="av-indicator grey" title="You have time off today.">
+                                        ✈
+                                    </div>
+                                </td>
+                                <td>
+                                    <h4>5</h4>
+                                </td>
+                                <td>
+                                    <h4>6</h4>
+                                </td>
+                                <td>
+                                    <h4>7</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!--confirmation modals-->
+<div id="confirm-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">Request Sent!</div>
+        <div class="modal-message">
+            <p>Make sure to keep an eye on your request and communicate with other staff as necessary.</p>
+            <div class="modal-button-holder">
+                <button id="confirm-modal-button">Okay</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--request modals-->
+<div id="req-cover-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">Request a Cover</div>
+        <div class="modal-message">
+            <p>Would you like to request a cover for your shift on <span id="req-cover-date"></span> from <span id="req-cover-time"></span>?</p>
+            <label class="modal-disclaimer">
+                <input type="checkbox" id="req-cover-msg" />
+                By checking this box, you are confirming your understanding that you are still responsible for this shift up until it is claimed by another employee. 
+                If you are completely unavailable for this shift, please update your availability, request time off, or speak with management regarding this shift.
+            </label>
+            <div class="modal-button-holder">
+                <button id="req-cover-confirm">Yes, request a cover.</button>
+                <button id="req-cover-close">Nevermind.</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="req-trade-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">Request a Trade</div>
+        <div class="modal-message">
+            <p>Would you like to request to trade your shift (<span id="req-trade-date"></span> from <span id="req-trade-time"></span>) for a different employee's shift?</p>
+            <label class="modal-disclaimer">
+                <input type="checkbox" id="req-trade-msg" />
+                By checking this box, you are confirming your understanding that you are still responsible for this shift up until it is claimed by another employee. 
+                If you are completely unavailable for this shift, please update your availability, request time off, or speak with management regarding this shift.
+            </label>
+            <div class="modal-button-holder">
+                <button id="req-trade-confirm">Yes, request a trade.</button>
+                <button id="req-trade-close">Nevermind.</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--cancel request modal-->
+<div id="cancel-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">Cancel Request</div>
+        <div class="modal-message">
+            <p>Are you sure you want to cancel your <span id="cancel-request-type"></span> request for <span id="cancel-shift-date"></span>?</p>
+            <div class="modal-button-holder">
+                <button id="cancel-confirm">Confirm.</button>
+                <button id="cancel-close">Nevermind.</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="error-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">An Error Occurred</div>
+        <div class="modal-message">
+            <p id="error-message">Error message here.</p>
+            <div class="modal-button-holder">
+                <button id="error-modal-button">Okay</button>
+            </div>
+        </div>
+    </div>
+</div>
+<form id="submit-form">
+    <textarea id="info-type"></textarea>
+    <textarea id="info-main"></textarea>
+    <button type="submit" id="form-btn"></button>
+</form>
+    <!--Scripts for the carousel.-->
+    <script src="./assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper",
+        {
+            slidesPerView: "auto",
+            spaceBetween: 10,
+            navigation:
+            {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            }
+        });
+    </script>
+    
+</body>
+</html>

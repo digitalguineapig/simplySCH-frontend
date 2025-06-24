@@ -1,0 +1,569 @@
+/*--------general styles*/
+
+*
+{
+    padding: 0px;
+    margin: 0px;
+}
+
+:root
+{
+    --blue: lightskyblue;
+
+    --weight: 400;
+
+    --click-transition: all 400ms ease;
+}
+
+ul, li, a, a:hover
+{
+    list-style: none;
+    text-decoration: none;
+    color: inherit;
+}
+
+/*--------body styles*/
+
+body, textarea
+{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-grid
+{
+    display: grid;
+    grid-template-columns: 50px auto;
+}
+
+/*--------nav styles*/
+
+nav
+{
+    position: fixed;
+    left: 0px;
+    height: 100vh;
+    width: 10vw;
+    background-color: grey;
+    text-align: center;
+}
+
+nav img
+{
+    width: 75px;
+    padding: 2vh 0px;
+}
+
+nav ul
+{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+nav ul li
+{
+    margin: 3vh 0;
+}
+
+nav ul li a
+{
+    font-size: 3vh;
+}
+
+nav ul li a, .weekday-buttons button, .single-shift button, #availability button, #time-off button, #info button, .modal-button-holder button, .modal-close-button, .settings-btn-holder button
+{
+    display: inline-block;
+    border: none;
+    width: 75px;
+    border-radius: 12px;
+    padding: 5px 10px;
+    background-color: var(--blue);
+    color: white;
+    font-size: 24px;
+    transition: var(--click-transition);
+    cursor: pointer;
+}
+
+nav ul li a:hover
+{
+    color: grey;
+    background-color: white;
+}
+
+/*--------main styles*/
+
+main
+{
+    margin-left: 10vw;
+    padding: 1vh 1vw;
+}
+
+main header h1
+{
+    font-size: 5vw;
+    color: var(--blue);
+}
+
+main header h1 span
+{
+    color: grey;
+}
+
+.section-header
+{
+    background-color: grey;
+    color: white;
+    border-radius: 12px;
+    font-size: 2vw;
+    width: 98%;
+    padding: 5px 10px;
+    margin: 4vh 0 1vh 0;
+}
+
+.section-grid
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: none;
+    align-items: center;
+}
+
+.time-grid
+{
+    align-items: normal;
+}
+
+.schedule-list, .single-shift, .av-schedule, .time-grid h2, .info-list, .settings-list
+{
+    color: grey;
+    width: fit-content;
+}
+
+.schedule-time, .single-shift, .av-schedule h2, .time-grid h2, .info-list h2, .settings-list h2
+{
+    border-bottom: 2px solid grey;
+    margin-left: .75vw;
+}
+
+.schedule-time, .single-shift
+{
+    display: grid;
+    grid-template-columns: 50vw 250px;
+}
+
+.single-shift
+{
+    align-items: center;
+}
+
+.schedule-time h2, .single-shift h2, .av-schedule h2, .time-grid h2, .info-list h2, .settings-list h2
+{
+    padding: 10px 5px;
+    font-weight: 400;
+}
+
+.av-schedule h2
+{
+    padding-right: .75vw;
+}
+
+.weekday-buttons
+{
+    display: grid;
+    grid-template-columns: 100px 50px 100px;
+    justify-items: center;
+    align-items: center;
+}
+
+.weekday-buttons button
+{
+    width: 100px;
+}
+
+.single-shift button, .settings-btn-holder button
+{
+    width: 250px;
+}
+
+.weekday-buttons button:hover, .single-shift button:hover, .modal-button-holder button:hover, #availability button:hover, .request-toff:hover, #info-edit:hover, .modal-close-button:hover, .settings-btn-holder button:hover
+{
+    background-color: grey !important;
+    cursor: pointer;
+}
+
+.claimed
+{
+    opacity: 50%;
+}
+
+.claimed button
+{
+    background-color: grey;
+    cursor: not-allowed !important;
+}
+
+.active-day h2
+{
+    color: var(--blue);
+    font-weight: 700;
+}
+
+.past-day
+{
+    opacity: 50%;
+}
+
+.past-day button
+{
+    background-color: grey;
+}
+
+.conflict
+{
+    opacity: 50%;
+}
+
+.conflict button
+{
+    background-color: grey;
+}
+
+.conflict button:hover
+{
+    cursor: not-allowed;
+}
+
+.av-button-holder, .info-button-holder, .settings-btn-holder
+{
+    padding: 10px 0px 0px .75vw;
+}
+
+.av-button-holder #av-edit, .av-button-holder #av-cancel, .info-button-holder #info-edit
+{
+    width: 100%;
+}
+
+.av-schedule .list-title, .time-grid .list-title, .settings-list .list-title
+{
+    font-weight: 600;
+    color: var(--blue);
+    border-bottom: 2px solid var(--blue);
+}
+
+.time-grid div h2
+{
+    width: 80%;
+}
+
+#time-off .request-toff
+{
+    margin: 10px 0px 0px .75vw;
+    padding: 5px 15px;
+    width: 82%;
+}
+
+.single-setting
+{
+    display: grid;
+    grid-template-columns: 1fr 20px;
+}
+
+/*--------modal styles*/
+
+.modal
+{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.3);
+}
+
+.modal-content
+{
+    background-color: grey;
+    margin: 10% auto;
+    border-radius: 12px;
+    width: 50%;
+    padding-bottom: 10px;
+}
+
+#av-edit-modal .modal-content
+{
+    width: 60%;
+}
+
+.modal-header
+{
+    background-color: var(--blue);
+    color: white;
+    border-radius: 12px 12px 0 0;
+    text-align: center;
+    font-size: 3vw;
+    padding: 5px 0px;
+}
+
+.working
+{
+    display: inline-block;
+}
+
+.modal-message
+{
+    background-color: white;
+    color: grey;
+    font-size: 25px;
+    border-radius: 0 0 12px 12px;
+    margin: 0px 10px;
+    padding: 5px;
+}
+
+.modal-button-holder
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+
+.modal-button-holder button
+{
+    width: 100% !important;
+}
+
+.modal-close-button
+{
+    width: 100%;
+    margin-top: 1vh;
+}
+
+.modal-list
+{
+    max-height: 150px;
+    overflow: auto;
+}
+
+.modal-list li
+{
+    margin: 5px;
+}
+
+.modal-list input
+{
+    height: 25px;
+    width: 25px;
+}
+
+.modal-option
+{
+    display: inline-block;
+    font-size: 16px;
+}
+
+.modal-disclaimer
+{
+    display: inline-block;
+    font-size: 12px;
+}
+
+.modal-edit-list
+{
+    margin: 5px 0px;
+    max-height: 40vh;
+    overflow-y: auto;
+}
+
+.modal-edit-list li
+{
+    display: grid; 
+    align-items: center;
+}
+
+.modal input, #timeoff-note
+{
+    font-size: 14pt;
+    color: var(--blue);
+    padding: 2px;
+    margin: 5px;
+    border-radius: 8px;
+    border: 2px solid grey;
+}
+
+.modal-edit-list input, #timeoff-note
+{
+    width: 75%;
+}
+
+.modal input:focus
+{
+   outline: 3px solid var(--blue);
+}
+
+.modal-edit-list .email-warning
+{
+    font-size: 12px;
+}
+
+.modal-av-edit li
+{
+    border-bottom: 2px solid grey;
+}
+
+.modal-av-edit .main-inputs
+{
+    display: grid;
+    grid-template-columns: 175px 250px auto;
+    align-items: center;
+    padding: 2px 0px;
+}
+
+.modal-av-edit li:last-child
+{
+    border-bottom: none;
+}
+
+.av-mods
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.av-edit-notes
+{
+    display: grid;
+    grid-template-columns: 80px auto;
+    align-items: center;
+    margin: 6px 0px 2px 0px;
+}
+
+.modal-av-edit label
+{
+    display: none;
+}
+
+.modal-av-edit .av-toggle label
+{
+    display: inline-block;
+    font-size: 14px;
+}
+
+.av-radio-option
+{
+    display: grid;
+    grid-template-columns: 25px auto;
+    align-items: center;
+    height: 25px;
+}
+
+.modal-av-edit .av-hour-set
+{
+    display: grid;
+    grid-template-columns: 40% 30px 40% 20px;
+    gap: 0px;
+    align-items: center;
+}
+
+.modal-av-edit input
+{
+    width: inherit;
+    height: 20px;
+}
+
+.modal-av-edit .allday-label
+{
+    display: inline-block;
+}
+
+.av-add-button
+{
+    color: var(--blue);
+}
+
+.text-center
+{
+    text-align: center;
+}
+
+.single-option
+{
+    display: grid;
+    grid-template-columns: 10px auto;
+    align-items: center;
+}
+
+.single-option-msg
+{
+    margin-left: 1.5vw;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: grey;
+    border-radius: 12px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.single-option h2
+{
+    color: var(--blue);
+}
+
+.single-option-msg p
+{
+    color: white;
+}
+
+.shift-trade-option-btns
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.shift-trade-option-btns button:hover
+{
+    background-color: white !important;
+    color: grey;
+}
+
+#shift-tracker .single-option button
+{
+    font-size: 18px;
+    width: 100%;
+}
+
+#confirm-modal .modal-button-holder, #error-modal .modal-button-holder
+{
+    grid-template-columns: 1fr;
+    margin-top: 5px;
+}
+
+#confirm-modal .modal-content, #error-modal .modal-content
+{
+    width: 30%;
+    text-align: center;
+}
+
+.allday-checkbox
+{
+    font-size: 12px;
+}
+
+.trade-option-conflict
+{
+    margin-left: 42px;
+}
+
+#time-one, #time-two
+{
+    display: none;
+}
+
+#submit-form
+{
+    margin-left: 200px;
+    /*display: none;*/
+}

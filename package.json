@@ -1,0 +1,19 @@
+{
+  "name": "simplysch-frontend",
+  "version": "1.0.0",
+  "description": "Simply Schedule's front-end.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xunvyre/simplySch-frontend.git"
+  },
+  "author": "Victoria David",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xunvyre/simplySch-frontend/issues"
+  },
+  "homepage": "https://github.com/xunvyre/simplySch-frontend#readme"
+}
