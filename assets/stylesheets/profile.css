@@ -69,7 +69,7 @@ nav ul li a
     font-size: 3vh;
 }
 
-nav ul li a, .weekday-buttons button, .single-shift button, #availability button, #time-off button, #info button, .modal-button-holder button, .modal-close-button, .settings-btn-holder button
+nav ul li a, button
 {
     display: inline-block;
     border: none;
@@ -80,6 +80,12 @@ nav ul li a, .weekday-buttons button, .single-shift button, #availability button
     color: white;
     font-size: 24px;
     transition: var(--click-transition);
+    cursor: pointer;
+}
+
+button:hover
+{
+    background-color: grey !important;
     cursor: pointer;
 }
 
@@ -123,31 +129,24 @@ main header h1 span
 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: none;
-    align-items: center;
 }
 
-.time-grid
-{
-    align-items: normal;
-}
-
-.schedule-list, .single-shift, .av-schedule, .time-grid h2, .info-list, .settings-list
+.schedule-list, .single-shift, .av-schedule, .info-list, .settings-list
 {
     color: grey;
     width: fit-content;
 }
 
-.schedule-time, .single-shift, .av-schedule h2, .time-grid h2, .info-list h2, .settings-list h2
+.schedule-time, .single-shift, .av-schedule h2, .info-list h2, .settings-list li, .time-section div
 {
     border-bottom: 2px solid grey;
-    margin-left: .75vw;
 }
 
 .schedule-time, .single-shift
 {
     display: grid;
     grid-template-columns: 50vw 250px;
+    gap: 10px;
 }
 
 .single-shift
@@ -157,6 +156,7 @@ main header h1 span
 
 .schedule-time h2, .single-shift h2, .av-schedule h2, .time-grid h2, .info-list h2, .settings-list h2
 {
+    color: grey;
     padding: 10px 5px;
     font-weight: 400;
 }
@@ -179,15 +179,9 @@ main header h1 span
     width: 100px;
 }
 
-.single-shift button, .settings-btn-holder button
+.single-shift button, .settings-btn-holder button, .time-grid button
 {
     width: 250px;
-}
-
-.weekday-buttons button:hover, .single-shift button:hover, .modal-button-holder button:hover, #availability button:hover, .request-toff:hover, #info-edit:hover, .modal-close-button:hover, .settings-btn-holder button:hover
-{
-    background-color: grey !important;
-    cursor: pointer;
 }
 
 .claimed
@@ -234,12 +228,40 @@ main header h1 span
 
 .av-button-holder, .info-button-holder, .settings-btn-holder
 {
-    padding: 10px 0px 0px .75vw;
+    padding-top: 10px;
 }
 
-.av-button-holder #av-edit, .av-button-holder #av-cancel, .info-button-holder #info-edit
+.av-button-holder #av-edit, .av-button-holder .cancel-btn, .info-button-holder #info-edit
 {
     width: 100%;
+}
+
+.time-grid
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.time-grid .time-section
+{
+    width: fit-content;
+}
+
+.time-section .single-time
+{
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    gap: 10px;
+}
+
+#time-off .request-toff
+{
+    margin: 10px 0px 0px .75vw;
+    padding: 5px 15px;
+    width: 100%;
+    margin-left: 0px;
 }
 
 .av-schedule .list-title, .time-grid .list-title, .settings-list .list-title
@@ -249,22 +271,10 @@ main header h1 span
     border-bottom: 2px solid var(--blue);
 }
 
-.time-grid div h2
-{
-    width: 80%;
-}
-
-#time-off .request-toff
-{
-    margin: 10px 0px 0px .75vw;
-    padding: 5px 15px;
-    width: 82%;
-}
-
 .single-setting
 {
     display: grid;
-    grid-template-columns: 1fr 20px;
+    grid-template-columns: 20px 1fr;
 }
 
 /*--------modal styles*/
@@ -511,22 +521,33 @@ main header h1 span
     color: var(--blue);
 }
 
-.single-option-msg p
+.single-option-msg
 {
     color: white;
 }
 
-.shift-trade-option-btns
+.shift-trade-option-radio
 {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    justify-items: center;
     gap: 10px;
 }
 
-.shift-trade-option-btns button:hover
+.shift-trade-option-radio div
 {
-    background-color: white !important;
-    color: grey;
+    background-color: var(--blue);
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 18px;
+    text-align: center;
+    width: 150px;
+}
+
+.trade-options-save-btn
+{
+    align-self: start;
 }
 
 #shift-tracker .single-option button

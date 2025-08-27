@@ -155,9 +155,19 @@
                             <h2>!</h2>
                             <div class="single-option-msg">
                                 <p>Snoopy has offered their shift on Monday, 07/10, from 5:00 PM-11:00 PM:</p>
-                                <div class="shift-trade-option-btns">
-                                    <button>Accept</button>
-                                    <button>Reject</button>
+                                <div class="shift-trade-option-radio">
+                                    <!--NEEDSINFO: i need the id to be accept_uniqueshiftid and reject_uniqueshiftid respectively OR i need to know where the unique shift id will go and i can have the javascript assign it-->
+                                    <!--the shifts need a unique value in "name" per shift otherwise the radio buttons will not work properly-->
+                                    <div>
+                                        <input type="radio" id= "accept_[NEEDSINFO]1" name="shift1" class= "trade-radio-option" value="accept">
+                                            <label for="accept_[NEEDSINFO]1">Accept</label>
+                                        </input>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id= "reject_[NEEDSINFO]1" name="shift1" class= "trade-radio-option" value="reject">
+                                            <label for="reject_[NEEDSINFO]1">Reject</label>
+                                        </input>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -165,9 +175,17 @@
                             <h2>!</h2>
                             <div class="single-option-msg">
                                 <p>Snoopy has offered their shift on Monday, 07/10, from 5:00 PM-11:00 PM:</p>
-                                <div class="shift-trade-option-btns">
-                                    <button>Accept</button>
-                                    <button>Reject</button>
+                                <div class="shift-trade-option-radio">
+                                    <div>
+                                        <input type="radio" id= "accept_[NEEDSINFO]2" name="shift2" class= "trade-radio-option" value="accept">
+                                            <label for="accept_[NEEDSINFO]2">Accept</label>
+                                        </input>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id= "reject_[NEEDSINFO]2" name="shift2" class= "trade-radio-option" value="reject">
+                                            <label for="reject_[NEEDSINFO]2">Reject</label>
+                                        </input>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -175,13 +193,40 @@
                             <h2>!</h2>
                             <div class="single-option-msg">
                                 <p>Snoopy has offered their shift on Monday, 07/10, from 5:00 PM-11:00 PM:</p>
-                                <div class="shift-trade-option-btns">
-                                    <button>Accept</button>
-                                    <button>Reject</button>
+                                <div class="shift-trade-option-radio">
+                                    <div>
+                                        <input type="radio" id= "accept_[NEEDSINFO]3" name="shift3" class= "trade-radio-option" value="accept">
+                                            <label for="accept_[NEEDSINFO]3">Accept</label>
+                                        </input>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id= "reject_[NEEDSINFO]3" name="shift3" class= "trade-radio-option" value="reject">
+                                            <label for="reject_[NEEDSINFO]3">Reject</label>
+                                        </input>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-option">
+                            <h2>!</h2>
+                            <div class="single-option-msg">
+                                <p>Snoopy has offered their shift on Monday, 07/10, from 5:00 PM-11:00 PM:</p>
+                                <div class="shift-trade-option-radio">
+                                    <div>
+                                        <input type="radio" id= "accept_[NEEDSINFO]4" name="shift4" class= "trade-radio-option" value="accept">
+                                            <label for="accept_[NEEDSINFO]4">Accept</label>
+                                        </input>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id= "reject_[NEEDSINFO]4" name="shift4" class= "trade-radio-option" value="reject">
+                                            <label for="reject_[NEEDSINFO]4">Reject</label>
+                                        </input>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <button id="trade-options-save-btn" class="trade-options-save-btn">Submit Selections</button>
                 </div>
                 <!--remove other classes from button if not active-->
                 <div class="single-shift claimed">
@@ -205,7 +250,7 @@
                     <h2>● Tuesday: All Day</h2>
                     <h2>● Wednesday: Unavailable</h2>
                     <h2>● Thursday: 5:00 PM-11:00 PM</h2>
-                    <h2>● Friday: 9:00 AM-12:00 PM, 3:00 PM-11:00 PM</h2>
+                    <h2>● Friday: 9:00 AM-12:00 PM</h2>
                     <h2>● Saturday: All Day</h2>
                     <div class="av-button-holder">
                         <button id="av-edit">Edit</button>
@@ -221,26 +266,37 @@
                     <h2>→ Friday: 9:00 AM-12:00 PM, 3:00 PM-11:00 PM</h2>
                     <h2>→ Saturday: All Day</h2>
                     <div class="av-button-holder">
-                        <button id="av-cancel">Cancel Pending Change</button>
+                        <button class="cancel-btn" data-shifttype="av-pending" id="request1">Cancel Pending Change</button>
                     </div>
                 </div>
             </div>
         </div>
+<!--------time-off section-->
         <div id="time-off">
             <h2 class="section-header">My time off:</h2>
-            <div class="section-grid time-grid">
-                <div>
+            <div class="time-grid">
+                <div class="time-section">
                     <h2 class="list-title">Upcoming</h2>
-                    <h2>● Thursday, 07/06/2023</h2>
-                    <h2>● Friday, 07/07/2023</h2>
+                    <div class="single-time">
+                        <h2>● Thursday, 07/06/2023</h2>
+                        <button class="time-cancel cancel-btn" data-shifttype="toff" id="timeoff1">Cancel</button>
+                    </div>
+                    <div class="single-time">
+                        <h2>● Thursday, 07/06/2023</h2>
+                        <button class="time-cancel cancel-btn" data-shifttype="toff" id="timeoff2">Cancel</button>
+                    </div>
                 </div>
-                <div>
+                <div class="time-section">
                     <h2 class="list-title">Pending</h2>
-                    <h2>● Sunday, 12/24/2023</h2>
+                    <div class="single-time">
+                        <h2>● Saturday, 00/00/0000</h2>
+                        <button class="time-cancel cancel-btn" data-shifttype="toff-pending" id="timeoff3">Cancel</button>
+                    </div>
                     <button class="request-toff" id="time-req-btn">Request Time Off</button>
                 </div>
             </div>
         </div>
+<!--------info section-->        
         <div id="info">
             <h2 class="section-header">My personal information:</h2>
             <div class="info-list">
@@ -261,10 +317,10 @@
                     <h2 class="list-title">Home Page</h2>
                 </ul>
                 <li>
-                    <div class="single-setting">
-                        <label for="homepage-sync"><h2>● Sync Daily Details and week view with selected calendar date:</h2></label>
-                        <input type="checkbox" id="homepage-sync" name="homepage-sync"/>
-                    </div>
+                    <label class="single-setting">
+                        <input type="checkbox" id="homepage-sync" />
+                        <h2>Sync Daily Details and week view with selected calendar date.</h2>
+                    </label>
                 </li>
             </div>
             <div class="settings-btn-holder">
@@ -305,7 +361,7 @@
         <div class="modal-content">
             <div class="modal-header">Cancel Request</div>
             <div class="modal-message">
-                <p>Are you sure you want to cancel your <span id="cancel-request-type"></span> request for <span id="cancel-shift-date"></span>?</p>
+                <p>Are you sure you want to cancel your <span id="cancel-request-type"></span> request<span id="cancel-shift-date"></span>?</p>
                 <div class="modal-button-holder">
                     <button id="cancel-confirm">Confirm.</button>
                     <button id="cancel-close">Nevermind.</button>
@@ -351,7 +407,7 @@
         </div>
     </div>
 
-    <div id="req-time" class="modal working">
+    <div id="req-time" class="modal">
         <div class="modal-content">
             <div class="modal-header">Request Time Off</div>
             <div class="modal-message">
@@ -520,7 +576,7 @@
                         <input type="text" id="lname" name="lname" class="info-list-item" placeholder="current lname here">
                     </li>
                     <li>
-                        <label for="fname">Nickname:</label>
+                        <label for="bname">Nickname:</label>
                         <input type="text" id="bname" name="bname" class="info-list-item" placeholder="current nickname here">
                     </li>
                     <li>
@@ -857,5 +913,7 @@
     </form>
 
     <script src="./assets/js/profile.js"></script>
+    <script src="./assets/js/profile_modals.js"></script>
+    <script src="./assets/js/profile_cancel.js"></script>
 </body>
 </html>

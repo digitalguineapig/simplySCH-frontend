@@ -1,0 +1,640 @@
+//this file is for the more complex modals
+
+//request time off variables
+const timeReqModal = document.getElementById("req-time");
+const timeReqBtn = document.getElementById("time-req-btn");
+const timeReqTimeBox = document.getElementById("dates-only");
+const timeReqConfirmBtn = document.getElementById("req-time-confirm");
+const timeReqCloseBtn = document.getElementById("req-time-close");
+const timeReqDisclaimer = document.getElementById("req-time-msg");
+
+//offer trade variables
+const tradeShiftModal = document.getElementById("offer-trade-modal");
+const getTradeShiftBtns = document.querySelectorAll(".offer-trade");
+const getTradeShiftOptions = document.querySelectorAll(".trade-shift-option");
+const tradeShiftMsg = document.getElementById("trade-message");
+const tradeShiftConfirmBtn = document.getElementById("trade-shift-confirm");
+const tradeShiftClearBtn = document.getElementById("trade-shift-clear");
+const tradeShiftCloseBtn = document.getElementById("trade-shift-close");
+
+//edit info variables
+const infoModal = document.getElementById("info-edit-modal");
+const infoEditBtn = document.getElementById("info-edit");
+const infoCloseBtn = document.getElementById("edit-info-close");
+const infoConfirmBtn = document.getElementById("edit-info-confirm");
+
+//edit availability variables
+const avModal = document.getElementById("av-edit-modal");
+const avEditBtn = document.getElementById("av-edit");
+const avCloseBtn = document.getElementById("av-edit-close");
+const avEditConfirmBtn = document.getElementById("av-edit-confirm");
+const getAvAllDayBtns = document.querySelectorAll(".allday-trigger");
+const getAvAddBtns = document.querySelectorAll(".av-add-button");
+const getAvInfo = document.querySelectorAll(".av-input-group");
+const avEffectiveDate = document.getElementById("av-effective");
+const avDisclaimer = document.getElementById("av-edit-msg");
+
+//form variables
+var setFormType = document.getElementById("info-type");
+var setFormInfo = document.getElementById("info-main");
+var submitBtn = document.getElementById("form-btn");
+var itemBtnID;
+
+//------------------------------------------request time off functions
+
+function timeReqActivate()
+{
+    timeReqModal.style.display = "inline-block";
+};
+
+function timeReqConfirm()
+{
+    //checks:
+    //1) there are values in the date inputs
+    //2) that the start date is after the current date
+    //3) that the end date is after the start date
+    var startDate = document.getElementById("start-date").value;
+    var startTime = document.getElementById("start-time").value + ":00";
+    var endDate = document.getElementById("end-date").value;
+    var endTime = document.getElementById("end-time").value + ":00";
+
+    console.log(startDate, startTime, endDate, endTime);
+
+    var today = new Date();
+    var tDay = String(today.getDate()).padStart(2, '0');
+    var tMonth = String(today.getMonth() + 1).padStart(2, '0');
+    var tYear = today.getFullYear();
+    today = tYear + tMonth + tDay;
+
+    var sDateSplit = startDate.split("-");
+    var sYear = sDateSplit[0];
+    var sMonth = sDateSplit[1];
+    var sDay = sDateSplit [2];
+    var sDateComp = sYear + sMonth + sDay;
+
+    var eDateSplit = endDate.split("-");
+    var eYear = eDateSplit[0];
+    var eMonth = eDateSplit[1];
+    var eDay = eDateSplit[2];
+    var eDateComp = eYear + eMonth + eDay;
+
+    var sTimeSplit = startTime.split(":");
+    var sHours = sTimeSplit[0];
+    var sMins = sTimeSplit[1];
+    var sSecs = sTimeSplit[2];
+    var sTimeComp = sHours + sMins + sSecs;
+
+    var eTimeSplit = endTime.split(":");
+    var eHours = eTimeSplit[0];
+    var eMins = eTimeSplit[1];
+    var eSecs = eTimeSplit[2];
+    var eTimeComp = eHours + eMins + eSecs;
+
+    var timeoffNote = document.getElementById("timeoff-note").value;
+
+    if (!startDate)
+    {
+        alert("You need to select a start date.");
+        return;
+    }
+    
+    if (!endDate)
+    {
+        alert("You need to select an end date.");
+        return;
+    }
+
+    if (sDateComp <= today)
+    {
+        alert("You need to pick a start date that is after the current date.");
+        return;
+    }
+
+    if (eDateComp < sDateComp)
+    {
+        alert("You need to pick an end date that is after the start date.");
+        return;
+    }
+
+    //validate dates and times >> check disclaimer >> send data to server >> activate confirmation
+    
+    if (timeReqTimeBox.checked === false)
+    {
+        startTime = "00:00:00";
+        endTime = "23:59:59";
+
+        if (timeReqDisclaimer.checked === true)
+        {
+            setFormType.innerText = "request-timeoff";
+            setFormInfo.innerText = `${startDate} ${startTime}, ${endDate} ${endTime} & ${timeoffNote}`;
+            //submitBtn.click();
+        }
+        else
+        {
+            alert("You need to acknowledge the disclaimer before placing your request.");
+            return;
+        }
+    }
+    else
+    {
+        if (startTime === ":00")
+        {
+            alert("You need to enter a starting time.");
+            return;
+        }
+
+        if (endTime === ":00")
+        {
+            alert("You need to enter an end time.");
+            return;
+        }
+
+        //check start time against end time for single day off cases
+        if (sDateComp === eDateComp)
+        {
+            if (sTimeComp >= eTimeComp)
+            {
+                alert("You need to select an ending time that is after your starting time.")
+                return;
+            }
+        }
+
+        if (timeReqDisclaimer.checked === true)
+        {
+            setFormType.innerText = "request-timeoff";
+            setFormInfo.innerText = `${startDate} ${startTime}, ${endDate} ${endTime} & ${timeoffNote}`;
+            //submitBtn.click();
+        }
+        else
+        {
+            alert("You need to acknowledge the disclaimer before placing your request.");
+            return;
+        }
+    }
+};
+
+function timeReqTime()
+{
+    //if checkbox is clicked
+    //check true or false
+    //and display time boxes accordingly
+    var start = document.getElementById("time-one");
+    var end = document.getElementById("time-two");
+
+    if(timeReqTimeBox.checked === true)
+    {
+        start.style.display = "grid";
+        end.style.display = "grid";
+    }
+    else
+    {
+        start.style.display = "none";
+        end.style.display = "none";
+    }
+};
+
+function timeReqClose()
+{
+    timeReqModal.style.display = "none";
+    setFormInfo.innerText = "";
+    setFormType.innerText = "";
+};
+
+//----------------------------------------------offer trade functions
+
+function tradeShiftActivate(e)
+{
+    itemBtnID = e.target.parentElement.id;
+    var itemDate = e.target.parentElement.dataset.itemdate;
+    var name = document.getElementById("trade-shift-name");
+    var date = document.getElementById("trade-shift-date");
+    var time = document.getElementById("trade-shift-time");
+
+    setFormType.innerText = "offer-trade";
+
+    var fields = itemDate.split(": ");
+    name.innerText = fields [0]
+    date.innerText = fields [1];
+    time.innerText = fields [2];
+
+    //check all available shifts data-itemdate against the button data-itemdate
+
+    var shifts = document.querySelectorAll(".trade-shift-option");
+    shifts.forEach((shift) =>
+    {
+        if (itemDate === shift.dataset.itemdate)
+        {
+            shift.parentElement.innerHTML = `<div class="claimed trade-option-conflict" title="You can not trade for the same shift."> ${itemDate} </div>`
+        }
+    })
+    
+    tradeShiftModal.style.display = "inline-block";
+};
+
+function tradeShiftConfirm()
+{
+    //push all checkboxes to an array
+    allShifts = [];
+    checkedShifts = [];
+    var selectedShifts = document.querySelectorAll(".trade-shift-option");
+    selectedShifts.forEach((shift) =>
+    {
+        if(shift.checked === true)
+        {
+            allShifts.push(1);
+            checkedShifts.push(shift.parentElement.parentElement.id);
+        }
+        else
+        {
+            allShifts.push(0);
+        }
+    });
+
+    //check for any true value
+    function checkShiftTrue(shift)
+    {
+        return shift > 0;
+    };
+
+    //proceed if there is a checked shift, throw alert if not
+    if (allShifts.some(checkShiftTrue) === true)
+    {
+        setFormType.innerText = "trade-offer";
+        setFormInfo.innerText = `${itemBtnID},${checkedShifts}`;
+        //submitBtn.click();
+        tradeShiftModal.style.display = "none";
+        //tradeShiftClear();
+        //confirmModalActivate();
+    }
+    else
+    {
+        alert("You need to select at least one shift to proceed.")
+    }
+};
+
+function tradeShiftClear()
+{
+    var selectedShifts = document.querySelectorAll('input[type="checkbox"]');
+    selectedShifts.forEach((shift) =>
+    {
+        shift.checked = false;
+    });
+};
+
+function tradeShiftClose()
+{
+    tradeShiftClear();
+    setFormInfo.innerText = "";
+    setFormType.innerText = "";
+    tradeShiftModal.style.display = "none";
+};
+
+getTradeShiftBtns.forEach((btn) =>
+{
+    btn.addEventListener("click", tradeShiftActivate);
+});
+
+//----------------------------------------------------edit info modal
+
+function infoEditActivate()
+{
+    infoModal.style.display = "inline-block";
+};
+
+function infoClose()
+{
+    infoModal.style.display = "none";
+    setFormInfo.innerText = "";
+    setFormType.innerText = "";
+};
+
+function infoConfirm()
+{
+    var fName = document.getElementById("fname");
+    var lName = document.getElementById("lname");
+    var eMail = document.getElementById("email");
+    var phoneNum = document.getElementById("phone");
+    var address1 = document.getElementById("address1");
+    var cityName = document.getElementById("city");
+    var stateName = document.getElementById("state");
+    var zipCode = document.getElementById("zip");
+
+    var missingInfo = 0;
+
+    if(!fName.value)
+    {
+        fName.style.border = "2px solid red";
+        fName.placeholder = "Required"
+        missingInfo = 1;
+    };
+    if(!lName.value)
+    {
+        lName.style.border = "2px solid red";
+        lName.placeholder = "Required"
+        missingInfo = 1;
+    };
+    if(!eMail.value)
+    {
+        eMail.style.border = "2px solid red";
+        eMail.placeholder = "Required"
+        missingInfo = 1;
+    };
+    if(!phoneNum.value)
+    {
+        phoneNum.style.border = "2px solid red";
+        phoneNum.placeholder = "Required"
+        missingInfo = 1;
+    };
+    if(!address1.value)
+    {
+        address1.style.border = "2px solid red";
+        address1.placeholder = "Required: Address Line 1"
+        missingInfo = 1;
+    };
+    if(!cityName.value)
+    {
+        cityName.style.border = "2px solid red";
+        cityName.placeholder = "Required: City"
+        missingInfo = 1;
+    };
+    if(!stateName.value)
+    {
+        stateName.style.border = "2px solid red";
+        stateName.placeholder = "Required: State"
+        missingInfo = 1;
+    };
+    if(!zipCode.value)
+    {
+        zipCode.style.border = "2px solid red";
+        zipCode.placeholder = "Required: Zip"
+        missingInfo = 1;
+    };
+
+    if(missingInfo === 1)
+    {
+        alert("You need to fill in the required information.")
+        return;
+    }
+
+    //gather all the data and feed it into the form
+    empInfo = [];
+    inputs = document.querySelectorAll(".info-list-item")
+    inputs.forEach((input) =>
+    {
+        empInfo.push(`(${input.value})`);
+    });
+    setFormType.innerText = "set-employeeinfo";
+    setFormInfo.innerText = `${empInfo}`;
+    //submitBtn.click();
+};
+
+//---------------------------------------------edit availability modal
+
+function avEditActivate()
+{
+    avModal.style.display = "inline-block";
+};
+
+function avEditConfirm()
+{
+    //make sure that edit button isnt live if theres a pending edit
+    //checks:
+    //there is data or a checked box in every slot
+    //all times are chronological
+    //disclaimer is checked
+    
+    var startDate = document.getElementById("av-effective").value;
+
+    var today = new Date();
+    var tDay = String(today.getDate()).padStart(2, '0');
+    var tMonth = String(today.getMonth() + 1).padStart(2, '0');
+    var tYear = today.getFullYear();
+    today = tYear + tMonth + tDay;
+
+    var sDateSplit = startDate.split("-");
+    var sYear = sDateSplit[0];
+    var sMonth = sDateSplit[1];
+    var sDay = sDateSplit [2];
+    var sDateComp = sYear + sMonth + sDay;
+
+    if(!startDate)
+    {
+        alert(`Please provide an effective date for your new availability.`);
+        return;
+    }
+
+    if(sDateComp <= today)
+    {
+        alert(`Please select an effective date that is after the current date.`)
+        return;
+    }
+    
+    weekInfo = [];
+    for (let day of getAvInfo)
+    {
+        //if (fullday is checked)
+        //{set times to 00:00 and 23:59 and push to array}
+        //else if (fullday is not checked)
+        //{pull times from input and push to array }
+        //else
+        //{alert("You need to fill in all availability slots before proceeding.")}
+        //return;
+        var radioBtn = day.querySelector(`input[type=radio]:checked`);
+        var noteContent = day.lastElementChild.lastElementChild.value;
+        var dayCheckBox = day.firstElementChild.children[1].firstElementChild.firstElementChild.firstElementChild;
+        var radioBtnInfo;
+        var startTime;
+        var endTime;
+
+        if (!radioBtn)
+        {
+            alert("Please fill out all available fields before continuing.");
+            return;
+        }
+        if (dayCheckBox.checked === true)
+        {
+            startTime = "00:00:00"
+            endTime = "23:59:59"
+            radioBtnInfo = radioBtn.nextElementSibling.innerText;
+        }
+        else if (dayCheckBox.checked === false)
+        {
+            startTime = day.firstElementChild.lastElementChild.firstElementChild.nextElementSibling.value + ":00";
+            endTime = day.firstElementChild.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.value + ":00";
+            radioBtnInfo = radioBtn.nextElementSibling.innerText;
+            
+            if (startTime === ":00" || endTime === ":00")
+            {
+                alert("Please fill out all available fields before continuing.");
+                return;
+            }
+        }
+        else
+        {
+            dayName = day.firstElementChild.firstElementChild.innerText;
+            alert(`An error ocurred while fetching time information for ${dayName}, please try again.`)
+            return;
+        }
+        console.log(startTime, endTime, noteContent, radioBtnInfo);
+        weekInfo.push("[" + radioBtnInfo + ": " + startTime + "-" + endTime + " & " + noteContent + "]");
+    };
+
+    if (avDisclaimer.checked === true)
+    {
+        setFormType.innerText = "set-availability";
+        setFormInfo.innerText = `${weekInfo},${startDate}`;
+        //submitBtn.click();
+    }
+    else
+    {
+        alert("You need to acknowledge the disclaimer before placing your request.");
+        return;
+    }
+    //avModal.style.display = "none";
+};
+
+function avEditClose()
+{
+    avModal.style.display = "none";
+};
+
+function avAllDay(btn)
+{
+    //removes hour selection
+    var avDayId = btn.target.id;
+    var btnCheck = document.getElementById(avDayId);
+    switch (avDayId)
+    {
+        case "sun-allday":
+            var div = document.getElementById("sun-select");
+            if (btnCheck.checked === true)
+            {
+                div.style.display = "none";
+            }
+            else {div.style.display = "grid"};
+            break;
+        case "mon-allday":
+            var div = document.getElementById("mon-select");
+            if (btnCheck.checked === true)
+            {
+                div.style.display = "none";
+            }
+            else {div.style.display = "grid"};
+            break;
+        case "tue-allday":
+            var div = document.getElementById("tue-select");
+            if (btnCheck.checked === true)
+            {
+                div.style.display = "none";
+            }
+            else {div.style.display = "grid"};
+            break;
+        case "wed-allday":
+            var div = document.getElementById("wed-select");
+            if (btnCheck.checked === true)
+            {
+                div.style.display = "none";
+            }
+            else {div.style.display = "grid"};
+            break;
+        case "thu-allday":
+            var div = document.getElementById("thu-select");
+            if (btnCheck.checked === true)
+            {
+                div.style.display = "none";
+            }
+            else {div.style.display = "grid"};
+            break;
+        case "fri-allday":
+            var div = document.getElementById("fri-select");
+            if (btnCheck.checked === true)
+            {
+                div.style.display = "none";
+            }
+            else {div.style.display = "grid"};
+            break;
+        case "sat-allday":
+            var div = document.getElementById("sat-select");
+            if (btnCheck.checked === true)
+            {
+                div.style.display = "none";
+            }
+            else {div.style.display = "grid"};
+            break;
+        default:
+            alert("Something went wrong");
+            break;
+    }
+};
+
+getAvAllDayBtns.forEach((btn) =>
+{
+    btn.addEventListener("click", avAllDay);
+});
+
+function avAddSlot(btn)
+{
+    var avDayId = btn.target.id;
+    console.log(avDayId);
+    switch (avDayId)
+    {
+        case "addsun":
+            console.log("Show additional timeslot.");
+            break;
+        case "addmon":
+            console.log("Show additional timeslot.");
+            break;
+        case "addtue":
+            console.log("Show additional timeslot.");
+            break;
+        case "addwed":
+            console.log("Show additional timeslot.");
+            break;
+        case "addthur":
+            console.log("Show additional timeslot.");
+            break;
+        case "addfri":
+            console.log("Show additional timeslot.");
+            break;
+        case "addsat":
+            console.log("Show additional timeslot.");
+            break;
+        default:
+            alert("Something went wrong.")
+            break;
+    }
+    //switch statement based on id of add button?
+    //when case id===addsun
+    //reveal sunday's second hour selection and replace + with - (?)
+    /* html for the appended div (tested as hardcode)
+    <div class="av-hour-set">
+        <label for="sun-av-start2"></label>
+        <input type="time" id="sun-av-start2" name="sun-av-start2"/>
+        <p class="text-center">to</p>
+        <label for="sun-av-end2"></label>
+        <input type="time" id="sun-av-end2" name="sun-av-end2"/>
+    </div>*/
+};
+
+getAvAddBtns.forEach((btn) =>
+{
+    btn.addEventListener("click", avAddSlot);
+});
+
+//function calls
+timeReqBtn.addEventListener("click", timeReqActivate);
+timeReqTimeBox.addEventListener("click", timeReqTime);
+timeReqConfirmBtn.addEventListener("click", timeReqConfirm);
+timeReqCloseBtn.addEventListener("click", timeReqClose)
+
+tradeShiftConfirmBtn.addEventListener("click", tradeShiftConfirm);
+tradeShiftClearBtn.addEventListener("click", tradeShiftClear);
+tradeShiftCloseBtn.addEventListener("click", tradeShiftClose);
+
+infoEditBtn.addEventListener("click", infoEditActivate);
+infoConfirmBtn.addEventListener("click", infoConfirm);
+infoCloseBtn.addEventListener("click", infoClose);
+
+avEditBtn.addEventListener("click", avEditActivate);
+avEditConfirmBtn.addEventListener("click", avEditConfirm);
+avCloseBtn.addEventListener("click", avEditClose);
