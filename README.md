@@ -15,4 +15,4 @@ SimplySoftware
 ## Contact
 Please reach out to me with any questions or suggestions!
 * Github: [digitalguineapig](https://github.com/digitalguineapig/)
-* Email: victoria@thedavids.us
+* Email: thedigitalguineapig@gmail.com
